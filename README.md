@@ -7,7 +7,7 @@ The Health Insurance Application is a web-based application designed to facilita
 - [Installation](#installation)
 - [Usage](#usage)
 - [Entity-Relationship (ER) Diagram](#entity-relationship-er-diagram)
-- [database Relations](#database-relations)
+- [Database Relations](#database-relations)
 - [Contributing](#contributing)
 - [License](#license)
 

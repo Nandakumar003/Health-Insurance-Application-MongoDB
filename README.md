@@ -1,4 +1,4 @@
-# Health Insurance Application
+# Nanda Health Insurance Private Limited
 
 The Health Insurance Application is a web-based application designed to facilitate the management of health insurance policies for individuals and families.
 
@@ -15,7 +15,30 @@ The Health Insurance Application is a web-based application designed to facilita
 - **Claims Processing**: Streamline the process of submitting and tracking insurance claims.
 - **Premium Payments**: Provide options for users to make premium payments online.
 - **Notifications**: Send automated reminders and notifications regarding policy renewals, claims status, etc.
-- **Admin Dashboard**: Admin panel for managing users, policies, claims, and generating reports.
 
 ## Installation
 1. Clone the repository:
+
+2. Install dependencies:
+
+3. Set up environment variables (e.g., database connection strings, API keys).
+
+4. Start the application:
+
+5. Access the application in your web browser at http://localhost:3000.
+
+## Usage
+1. **User Registration**: Sign up for an account using the registration form.
+2. **Policy Management**: Browse available policies, select a plan, and purchase insurance.
+3. **Claims Processing**: Submit claims with necessary documentation and track their status.
+4. **Premium Payments**: Make premium payments securely through the application.
+
+## Contributing
+We welcome contributions from the community! If you'd like to contribute to the Health Insurance Application, please follow these guidelines:
+- Fork the repository.
+- Create a new branch for your feature or bug fix.
+- Make your changes and ensure the code is properly formatted.
+- Submit a pull request with a detailed description of your changes.
+
+## License
+This project is licensed under the [Nanda Health Insurance](LICENSE).

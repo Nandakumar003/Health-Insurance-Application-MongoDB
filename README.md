@@ -19,13 +19,11 @@ The Health Insurance Application is a web-based application designed to facilita
 ## Installation
 1. Clone the repository:
 
-2. Install dependencies:
+1. Install dependencies:
 
-3. Set up environment variables (e.g., database connection strings, API keys).
+1. Set up environment variables (e.g., database connection strings, API keys).
 
-4. Start the application:
-
-5. Access the application in your web browser at http://localhost:3000.
+1. Start the application
 
 ## Usage
 1. **User Registration**: Sign up for an account using the registration form.
@@ -41,4 +39,4 @@ We welcome contributions from the community! If you'd like to contribute to the 
 - Submit a pull request with a detailed description of your changes.
 
 ## License
-This project is licensed under the [Nanda Health Insurance](LICENSE).
+This project is licensed under the [Nanda Health Insurance Private Limited](LICENSE).

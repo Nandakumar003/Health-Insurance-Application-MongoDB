@@ -38,6 +38,11 @@ The Health Insurance Application is a web-based application designed to facilita
 ## Database Relations
 ![DB Relations](/Images/DB%20Relations.JPG)
 
+## Application SQL Table Structure
+- **Snippet 01**:![SQL Structure](/Images/DB%20Tables/table%201.JPG);
+- **Snippet 02**:[SQL Structure](/Images/DB%20Tables/table%202.JPG);
+- **Snippet 03**:[SQL Structure](/Images/DB%20Tables/table%203.JPG);
+
 ## Contributing
 We welcome contributions from the community! If you'd like to contribute to the Health Insurance Application, please follow these guidelines:
 - Fork the repository.

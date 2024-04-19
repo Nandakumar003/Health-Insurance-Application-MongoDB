@@ -41,8 +41,7 @@ document.getElementById("confpassword").addEventListener("input", function() {
 
 
 // NEW USER REGISTRATION JS CODE
-let newuserreg=document.getElementById("newuser-registration");
-newuserreg.addEventListener('submit',NewUserSignUp);
+document.getElementById("newuser-registration").addEventListener('submit',NewUserSignUp);
 function NewUserSignUp(e)
 {
     e.preventDefault();

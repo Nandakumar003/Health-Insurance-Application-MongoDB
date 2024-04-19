@@ -33,7 +33,7 @@
 
         <main>
             <div class="main-container">
-                <form class="user-form"action="login.php" method="POST">
+                <form class="user-form" id="newuser-registration"action="login.php" method="POST">
                     <h1>New User Sign up</h1>
                         <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
                         <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
@@ -41,6 +41,7 @@
                         <input type="text" id="Username" name="Username" placeholder="Username" required>
                         <input type="password" id="password" name="password" placeholder="Password" required>
                         <input type="password" id="confpassword" name="confpassword" placeholder="Re-Enter Password" required>
+                        <h5 id="error-message"></h5>
                         <div class="align-cent">
                             <input type="submit" id="submit" value="Register">
                         </div>
@@ -54,11 +55,11 @@
             </div>
             </div>
         </main>
-
         <footer>
             <div id="main-footer">
                 <p> Copyright&copy; 2024 <strong>Nanda Health Insurance Pvt Ltd</strong>. All Rights Reserved.</p>
             </div>   
         </footer>
+        <script src="./Scripts/user.js"></script>
 </body>
 </html>

@@ -37,13 +37,15 @@ async function emailExists(email) {
     return await con.query(sql)
 }
 
-let user = {
-    FirstName: "Cathy",
-    LastName: "1",
-    Username: "cathy1",
-    Email: "cc@fakemail.com",
-    Password: "icecream"
-}
+// let user = {
+//     FirstName: "Cathy",
+//     LastName: "1",
+//     Username: "cathy1",
+//     Email: "cc@fakemail.com",
+//     Password: "icecream"
+// }
+
+
 // register(user)
 // login(user)
 

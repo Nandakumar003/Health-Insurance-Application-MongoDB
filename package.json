@@ -4,8 +4,9 @@
   "description": "Application to Provide Insurance Services",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "health",
@@ -16,7 +17,8 @@
   "author": "Nanda Kumar G S",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mysql2": "^3.9.7"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"

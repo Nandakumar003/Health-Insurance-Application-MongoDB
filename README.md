@@ -33,15 +33,15 @@ The Health Insurance Application is a web-based application designed to facilita
 5. **Provider Search**: Search for the provider or add new PCP.
 
 ## Entity-Relationship (ER) Diagram
-![Health Insurance ER Diagram](/Images/ER%20Model.JPG)
+![Health Insurance ER Diagram](/public/Images/ER%20Model.JPG)
 
 ## Database Relations
-![DB Relations](/Images/DB%20Relations.JPG)
+![DB Relations](/public/Images/DB%20Relations.JPG)
 
 ## Application SQL Table Structure
-- **Snippet 01**:![SQL Structure Snippet](/Images/DB%20Tables/table%201.JPG);
-- **Snippet 02**:[SQL Table Structure Snippet](/Images/DB%20Tables/table%202.JPG);
-- **Snippet 03**:[SQL Table Structure Snippet](/Images/DB%20Tables/table%203.JPG);
+- **Snippet 01**:![SQL Structure Snippet](/public/Images/DB%20Tables/table%201.JPG);
+- **Snippet 02**:[SQL Table Structure Snippet](/public/Images/DB%20Tables/table%202.JPG);
+- **Snippet 03**:[SQL Table Structure Snippet](/public/Images/DB%20Tables/table%203.JPG);
 
 ## Contributing
 We welcome contributions from the community! If you'd like to contribute to the Health Insurance Application, please follow these guidelines:

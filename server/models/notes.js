@@ -38,8 +38,7 @@ async function addnotes(usernotes) {
       INSERT INTO UserNotes(UserId,NotesId,NotesDetail)
       VALUES("${usernotes.UserId}","${usernotes.NotesId}","${usernotes.NotesDetail}");`
     await con.query(sql);
-    return await getNotes(usernotes.UserId)
-
+    return await getSpecificUserNotes(usernotes.UserId)
 }
 
 module.exports = { getAllNotes }

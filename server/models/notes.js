@@ -19,4 +19,27 @@ async function getAllNotes() {
     return await con.query(sql)
 }
 
+async function getSpecificUserNotes(userid) {
+    let sql = `SELECT * FROM UserNotes 
+      WHERE UserId = "${userid}"`
+    return await con.query(sql)
+}
+
+let usernotes =
+{
+    UserId: "5",
+    NotesId: "Notes-009",
+    NotesDetail: "Check the Notes backend"
+}
+addnotes(usernotes)
+
+async function addnotes(usernotes) {
+    let sql = `
+      INSERT INTO UserNotes(UserId,NotesId,NotesDetail)
+      VALUES("${usernotes.UserId}","${usernotes.NotesId}","${usernotes.NotesDetail}");`
+    await con.query(sql);
+    return await getNotes(usernotes.UserId)
+
+}
+
 module.exports = { getAllNotes }

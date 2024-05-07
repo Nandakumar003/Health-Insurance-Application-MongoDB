@@ -1,3 +1,5 @@
+//import { getCurrentUser, removeUser } from "./user.js";
+
 export async function fetchData(route = '', data = {}, methodType) {
   const response = await fetch(`http://localhost:3000${route}`, {
     method: methodType, // *POST, PUT, DELETE, etc.
@@ -12,3 +14,4 @@ export async function fetchData(route = '', data = {}, methodType) {
     throw await response.json();
   }
 }
+

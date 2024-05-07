@@ -1,7 +1,7 @@
 /* ***** USER RELATED JS FILE ***** */
 
 // NEW USER PASSWORD VALIDATION CODE
-import { fetchData } from "./main.js";
+//import { fetchData } from "./main.js";
 document.getElementById("password").addEventListener("input", function () {
   var pass = document.getElementById("password").value
   var confpass = document.getElementById("confpassword").value;
@@ -146,4 +146,19 @@ function removeUser() {
   window.location.href = 'index.html'
 }
 
-export { getCurrentUser, setCurrentUser, removeUser }
+async function fetchData(route = '', data = {}, methodType) {
+  const response = await fetch(`http://localhost:3000${route}`, {
+    method: methodType, // *POST, PUT, DELETE, etc.
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  if (response.ok) {
+    return await response.json(); // parses JSON response into native JavaScript objects
+  } else {
+    throw await response.json();
+  }
+}
+
+//export { getCurrentUser, setCurrentUser, removeUser }

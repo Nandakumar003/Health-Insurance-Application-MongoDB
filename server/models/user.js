@@ -38,16 +38,12 @@ async function emailExists(email) {
 }
 
 // let user = {
-//     FirstName: "Cathy",
-//     LastName: "1",
-//     Username: "cathy1",
-//     Email: "cc@fakemail.com",
+//     FirstName: "Nanda",
+//     LastName: "Kumar",
+//     Username: "Nanda003",
+//     Email: "nanda@gmail.com",
 //     Password: "icecream"
 // }
-
-
-// register(user)
-// login(user)
 
 // CREATE in CRUD
 async function register(user) {
@@ -59,7 +55,7 @@ async function register(user) {
 
   let sql = `
     INSERT INTO UserData(FirstName,LastName,Username, Password, Email)
-    VALUES("${user.FirstName}","${user.LastName}","${user.Username}", "${user.Password}", "${user.Email}")
+    VALUES("${user.FirstName}","${user.LastName}","${user.Username}", "${user.Email}", "${user.Password}")
   `
   await con.query(sql)
   const u = await userExists(user.Username)
@@ -97,4 +93,4 @@ async function deleteAccount(user) {
   await con.query(sql)
 }
 
-module.exports = { getAllUsers, login, register, editUsername, deleteAccount }
+module.exports = { getAllUsers, userExists, emailExists, login, register, editUsername, deleteAccount }

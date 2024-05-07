@@ -25,13 +25,13 @@ async function getSpecificUserNotes(userid) {
     return await con.query(sql)
 }
 
-let usernotes =
-{
-    UserId: "5",
-    NotesId: "Notes-009",
-    NotesDetail: "Check the Notes backend"
-}
-addnotes(usernotes)
+// let usernotes =
+// {
+//     UserId: "5",
+//     NotesId: "Notes-009",
+//     NotesDetail: "Check the Notes backend"
+// }
+// addnotes(usernotes)
 
 async function addnotes(usernotes) {
     let sql = `
@@ -41,4 +41,4 @@ async function addnotes(usernotes) {
     return await getSpecificUserNotes(usernotes.UserId)
 }
 
-module.exports = { getAllNotes }
+module.exports = { getAllNotes, getSpecificUserNotes, addnotes }

@@ -1,6 +1,6 @@
 //import { getCurrentUser, removeUser } from "./user.js";
 
-export async function fetchData(route = '', data = {}, methodType) {
+async function fetchData(route = '', data = {}, methodType) {
   const response = await fetch(`http://localhost:3000${route}`, {
     method: methodType, // *POST, PUT, DELETE, etc.
     headers: {
@@ -15,3 +15,4 @@ export async function fetchData(route = '', data = {}, methodType) {
   }
 }
 
+//module.exports = { fetchData }; 

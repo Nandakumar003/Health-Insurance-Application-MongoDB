@@ -12,13 +12,21 @@ function AddNotes(e) {
         NotesDetail: notesdetails
     }
     num++;
-    fetchData('/notes/AddNotes', usernotes, 'POST')
+    fetch('http://localhost:3000/notes/AddNotes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(usernotes),
+
+    })
+        .then(response => response.json())
         .then(data => {
-            if (!data.message) {
-                window.location.href = "index.html"
-            }
+            console.log('Success:', data);
+            // Handle successful response from backend
         })
-        .catch(err => {
-            res.status(401).send({ message: err.message })
-        })
+        .catch((error) => {
+            console.error('Error:', error);
+            // Handle errors
+        });
 }

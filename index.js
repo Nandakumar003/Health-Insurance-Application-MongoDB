@@ -12,12 +12,8 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(express.static(__dirname + "/public/html/"))
-app.get('/', (req, res) => res.sendFile(path.join(__dirname + "index.html")))
-
 app.use("/users", userRoutes);
 app.use("/notes", userNotes);
-
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}!!!`));

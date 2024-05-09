@@ -1,3 +1,5 @@
+
+import { fetchData } from "./main.js"
 // Notes List form
 let num = 1;
 document.getElementById("notes-list").addEventListener('submit', AddNotes);
@@ -12,21 +14,13 @@ function AddNotes(e) {
         NotesDetail: notesdetails
     }
     num++;
-    fetch('http://localhost:3000/notes/AddNotes', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(usernotes),
-
-    })
-        .then(response => response.json())
+    fetchData('/notes/AddNotes', usernotes, 'POST')
         .then(data => {
-            console.log('Success:', data);
-            // Handle successful response from backend
+            if (!data.message) {
+                window.location.href = "index.html"
+            }
         })
-        .catch((error) => {
+        .catch(err => {
             console.error('Error:', error);
-            // Handle errors
-        });
+        })
 }

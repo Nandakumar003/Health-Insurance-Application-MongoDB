@@ -109,16 +109,21 @@ function isLetterOrDigit(char) {
 document.getElementById("newuser-registration").addEventListener('submit', NewUserSignUp);
 function NewUserSignUp(e) {
   e.preventDefault();
-  var formData = {
-    firstName: document.getElementById("firstname").value,
-    lastName: document.getElementById("lastname").value,
-    email: document.getElementById("email").value,
-    UserName: document.getElementById("Username").value,
-    Password: document.getElementById("password").value
-  };
-  console.log(formData);
+  let firstName = document.getElementById("firstname").value
+  let lastName = document.getElementById("lastname").value
+  let email = document.getElementById("email").value
+  let userName = document.getElementById("Username").value
+  let password = document.getElementById("password").value
+  const user =
+  {
+    FirstName: firstName,
+    LastName: lastName,
+    Username: userName,
+    Password: password,
+    Email: email
+  }
   // make a call to the server
-  fetchData('/users/register', formdata, 'POST')
+  fetchData('/users/register', user, 'POST')
     .then(data => {
       if (!data.message) {
         setCurrentUser(data)
@@ -126,10 +131,11 @@ function NewUserSignUp(e) {
       }
     })
     .catch(err => {
-      let error = document.querySelector(".error")
+      let error = document.getElementById("error-message")
+      error.style.color = "red";
       error.innerHTML = `${err.message}`
     })
-  document.getElementById("welcome").innerText = `Welcome ${username}!`
+  //document.getElementById("welcome").innerText = `Welcome ${username}!`
 }
 
 // configuring local storage

@@ -14,8 +14,8 @@ router
 
     .post('/AddNotes', async (req, res) => {
         try {
-            const user = await User.addnotes(req.body)
-            res.send({ ...usernotes })
+            const usernotes = await User.addnotes(req.body)
+            res.send(usernotes)
         } catch (err) {
             res.status(401).send({ message: err.message })
         }

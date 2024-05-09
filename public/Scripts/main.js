@@ -1,17 +1,41 @@
+let nav = document.getElementById("main-nav");
+if (getCurrentUser()) {
+  nav.innerHTML = `
+  <ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="notes.html">Take Notes</a></li>
+  <li><a href="reset.html">Reset</a></li>
+  <li><a id="log-out" href="index.html">Log out</a></li>
+</ul>
+  `
+} else {
+  nav.innerHTML = `
+  <ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="login.html">Login</a></li>
+  <li><a href="registration.html">Create Account</a></li>
+  <li><a href="reset.html">Reset</a></li>
+</ul>
+  `
+}
+function setCurrentUser(user) {
+  localStorage.setItem('user', JSON.stringify(user))
+}
 
+function getCurrentUser() {
+  return JSON.parse(localStorage.getItem('user'))
+}
 
-// Fetch method implementation:
-export async function fetchData(route = '', data = {}, methodType) {
-  const response = await fetch(`http://localhost:3000${route}`, {
-    method: methodType, // *POST, PUT, DELETE, etc.
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  });
-  if (response.ok) {
-    return await response.json(); // parses JSON response into native JavaScript objects
-  } else {
-    throw await response.json();
+function removeUser() {
+  localStorage.removeItem('user')
+  window.location.href = 'index.html'
+}
+
+let p1 = document.getElementById("log-out");
+if (p1) {
+  p1.addEventListener('click', logout)
+  function logout(e) {
+    e.preventDefault();
+    removeUser();
   }
 }

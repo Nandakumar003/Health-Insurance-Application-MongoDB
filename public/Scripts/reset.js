@@ -39,7 +39,7 @@ function ResetCredentials(e) {
         });
 }
 var userData = JSON.parse(localStorage.getItem('user'))
-if (userData.length != 0) {
+if (getCurrentUser()) {
     document.getElementById("password").addEventListener("input", function () {
         var pass = document.getElementById("password").value
         var confpass = document.getElementById("confpassword").value;

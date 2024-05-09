@@ -42,7 +42,7 @@ router
     .delete('/remove', async (req, res) => {
         try {
             await User.deleteAccount(req.body)
-            res.send({ success: "How DARE YOU LEAVE ME!!!! >:(((" })
+            res.send({ success: "We wish to see you again :(" })
         } catch (err) {
             res.status(401).send({ message: err.message })
         }

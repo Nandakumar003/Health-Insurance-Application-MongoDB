@@ -48,10 +48,10 @@ async function emailExists(email) {
 // CREATE in CRUD
 async function register(user) {
   let cUser = await userExists(user.Username)
-  if (cUser.length > 0) throw Error("Username Already in Use!")
+  if (cUser.length > 0) throw Error("Username is taken! &#128577")
 
   let email = await emailExists(user.Email)
-  if (email.length > 0) throw Error("Account with Email already in use")
+  if (email.length > 0) throw Error("Account with this Email is already registered! &#128577")
 
   let sql = `
     INSERT INTO UserData(FirstName,LastName,Username,Email,Password)

@@ -12,6 +12,16 @@ router
         }
     })
 
+    .get('/getUserData', async (req, res) => {
+        try {
+            const user = await User.getUserData(req.query)
+            res.send(user);
+        } catch (err) {
+            res.status(401).send({ message: err.message })
+        }
+    })
+
+
     .post('/login', async (req, res) => {
         try {
             const user = await User.login(req.body)

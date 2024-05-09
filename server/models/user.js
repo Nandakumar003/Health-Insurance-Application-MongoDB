@@ -22,6 +22,13 @@ async function getAllUsers() {
   let sql = `SELECT * FROM UserData;`
   return await con.query(sql)
 }
+async function getUserData(user) {
+  let sql = `SELECT * FROM UserData 
+    WHERE Username = "${user.username}" OR Email = "${user.useremail}" OR UserID ="${user.userid}";`
+  let p1 = await con.query(sql)
+  if (p1.length == 0) throw Error("Username/Email doesn't exist!! &#128577")
+  return p1
+}
 
 async function userExists(username) {
   let sql = `SELECT * FROM UserData 
@@ -93,4 +100,4 @@ async function deleteAccount(user) {
   await con.query(sql)
 }
 
-module.exports = { getAllUsers, userExists, emailExists, login, register, editUsername, deleteAccount }
+module.exports = { getAllUsers, getUserData, userExists, emailExists, login, register, editUsername, deleteAccount }

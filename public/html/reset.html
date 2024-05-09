@@ -35,13 +35,13 @@
 
     <main>
         <div class="main-container">
-            <form class="user-form" action="login.php" method="POST">
+            <form class="user-form" id="reset-credentials" action="reset.php" method="POST">
                 <h1>Reset Credentials</h1>
                 <div>
-                    <input type="text" name="username" id="username" placeholder="Username or Email" required>
+                    <input type="text" name="username" id="usernameoremail" placeholder="Username or Email" required>
                 </div>
                 <div class="align-cent">
-                    <input type="submit" name="submit" value="Submit">
+                    <input class="align-cent" type="submit" name="submit" value="Search">
                 </div>
             </form>
             <div class="align-cent">
@@ -62,6 +62,7 @@
             <p> Copyright&copy; 2024 <strong>Nanda Health Insurance Pvt Ltd</strong>. All Rights Reserved.</p>
         </div>
     </footer>
+    <script src="../Scripts/reset.js"></script>
 </body>
 
 </html>

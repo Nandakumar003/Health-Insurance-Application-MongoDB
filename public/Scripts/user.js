@@ -167,4 +167,4 @@ async function fetchData(route = '', data = {}, methodType) {
   }
 }
 
-//module.exports = { getCurrentUser, setCurrentUser, removeUser }
+//export { getCurrentUser, setCurrentUser, removeUser }

@@ -15,8 +15,7 @@ function AddNotes(e) {
     var userData = JSON.parse(localStorage.getItem('user'))
     const usernotes =
     {
-        // UserId: userData[0].UserID,
-        UserId: 1,
+        UserId: userData[0].UserID,
         NotesId: `Note-${num}`,
         NotesDetail: notesdetails
     }
@@ -38,6 +37,36 @@ function AddNotes(e) {
         })
 }
 
+
+//FUNCTION TO PULL PREVIOUS NOTES
+document.getElementById("previous-notes").addEventListener('submit', GetPreviousNotes);
+function GetPreviousNotes(e) {
+    e.preventDefault();
+    var queryParams = {
+        UserId: 1
+    }
+    let err = document.getElementById("error-message")
+    const url = '/notes/GetUserNotes';
+    const queryString = new URLSearchParams(queryParams).toString();
+    const fullUrl = `http://localhost:3000${url}?${queryString}`;
+
+    fetch(fullUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`The user doesn't exist or There are no notes for this User! &#128577`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle the response data
+            console.log(data)
+        })
+        .catch(error => {
+            // Handle errors
+            err.style.color = "red";
+            err.innerHTML = `${error.message}`
+        });
+}
 
 
 

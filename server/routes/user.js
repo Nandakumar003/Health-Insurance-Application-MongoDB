@@ -48,6 +48,14 @@ router
             res.status(401).send({ message: err.message })
         }
     })
+    .put('/updatepassword', async (req, res) => {
+        try {
+            let updatedUser = await User.editPassword(req.body)
+            res.send(updatedUser)
+        } catch (err) {
+            res.status(401).send({ message: err.message })
+        }
+    })
 
     .delete('/remove', async (req, res) => {
         try {

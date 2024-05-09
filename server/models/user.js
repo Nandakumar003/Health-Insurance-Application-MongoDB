@@ -72,8 +72,8 @@ async function register(user) {
 // READ in CRUD
 async function login(user) {
   let currentUser = await userExists(user.Username)
-  if (!currentUser[0]) throw Error("Username does not exist!")
-  if (user.Password !== currentUser[0].Password) throw Error("Password does not match!")
+  if (!currentUser[0]) throw Error("Username does not exist! &#128577")
+  if (user.Password !== currentUser[0].Password) throw Error("Password does not match! &#128577")
 
   return currentUser[0]
 }
@@ -91,6 +91,18 @@ async function editUsername(user) {
   return updatedUser[0]
 }
 
+async function editPassword(user) {
+  let sql = `
+    UPDATE UserData SET
+    Password  = "${user.Password}"
+    WHERE Username = "${user.Username}";
+  `
+  await con.query(sql)
+
+  let updatedUser = await userExists(user.Username)
+  return updatedUser[0]
+}
+
 // DELETE in CRUD
 async function deleteAccount(user) {
   let sql = `
@@ -100,4 +112,4 @@ async function deleteAccount(user) {
   await con.query(sql)
 }
 
-module.exports = { getAllUsers, getUserData, userExists, emailExists, login, register, editUsername, deleteAccount }
+module.exports = { getAllUsers, getUserData, userExists, emailExists, login, register, editUsername, deleteAccount, editPassword }

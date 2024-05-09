@@ -23,7 +23,6 @@ function ResetCredentials(e) {
         .then(data => {
             // Handle the response data
             setCurrentUser(data)
-            console.log(data);
             document.getElementById("usernameoremail").disabled = true;
             document.getElementById("submit").disabled = true;
             document.getElementById("submit").style.opacity = 0.6;
@@ -39,7 +38,8 @@ function ResetCredentials(e) {
             err.innerHTML = `${error.message}`
         });
 }
-if (true) {
+var userData = JSON.parse(localStorage.getItem('user'))
+if (userData.length != 0) {
     document.getElementById("password").addEventListener("input", function () {
         var pass = document.getElementById("password").value
         var confpass = document.getElementById("confpassword").value;
@@ -85,7 +85,7 @@ if (true) {
                 ButtonStatus(false)
             }
             else {
-                var userData = JSON.parse(localStorage.getItem('user'))
+
                 if (pass === userData[0].Password) {
                     mydiv.innerHTML = "New password cannot be the same as your old password! &#129488"
                     mydiv.style.color = "red";
@@ -165,4 +165,38 @@ function removeUser() {
 
 
 // CODE to Update User Password to Backend Database Table
-
+document.getElementById("password-form").addEventListener('submit', UpdatePassword);
+function UpdatePassword(e) {
+    e.preventDefault();
+    var formData = {
+        Username: userData[0].Username,
+        Password: document.getElementById("confpassword").value
+    };
+    // make a call to the server
+    fetchData('/users/updatepassword', formData, 'PUT')
+        .then(data => {
+            if (!data.message) {
+                setCurrentUser(data)
+                window.location.href = "index.html"
+            }
+        })
+        .catch(err => {
+            let error = document.getElementById("error-message")
+            error.style.color = "red";
+            error.innerHTML = `${err.message}`
+        })
+}
+async function fetchData(route = '', data = {}, methodType) {
+    const response = await fetch(`http://localhost:3000${route}`, {
+        method: methodType, // *POST, PUT, DELETE, etc.
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data) // body data type must match "Content-Type" header
+    });
+    if (response.ok) {
+        return await response.json(); // parses JSON response into native JavaScript objects
+    } else {
+        throw await response.json();
+    }
+}

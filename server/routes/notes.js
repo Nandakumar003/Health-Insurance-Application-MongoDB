@@ -15,8 +15,12 @@ router
     .get('/GetUserNotes', async (req, res) => {
         try {
             const notes = await UserNotes.getSpecificUserNotes(req.query)
-            if (notes.length != 0)
+            if (notes.length != 0) {
+                notes.sort((a, b) => {
+                    return new Date(a.CreatedOn) - new Date(b.CreatedOn); // descending
+                })
                 res.send(notes)
+            }
             else {
                 res.send({ Success: `The user doesn't exist or There are no notes for this User!!` })
             }
@@ -28,6 +32,9 @@ router
     .post('/AddNotes', async (req, res) => {
         try {
             const usernotes = await UserNotes.addnotes(req.body)
+            usernotes.sort((a, b) => {
+                return new Date(a.CreatedOn) - new Date(b.CreatedOn); // descending
+            })
             res.send(usernotes)
         } catch (err) {
             res.status(401).send({ message: err.message })
@@ -48,5 +55,4 @@ router
 //     } catch (err) {
 //         res.status(401).send({ message: err.message })
 //     })
-
 module.exports = router

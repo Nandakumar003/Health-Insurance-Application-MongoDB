@@ -40,10 +40,26 @@
                 <div>
                     <input type="text" name="username" id="usernameoremail" placeholder="Username or Email" required>
                 </div>
-                <h5 id="error-message"></h5>
+
                 <div class="align-cent">
-                    <input class="align-cent" type="submit" name="submit" value="Search">
+                    <input class="align-cent" id="submit" type="submit" name="submit" value="Search">
                 </div>
+                <h5 id="error-message"></h5>
+            </form>
+
+            <form class="user-form" id="password-form">
+                <div>
+                    <input type="password" name="password" id="password" placeholder="Enter New Password" required>
+                </div>
+                <div>
+                    <input type="password" name="confpassword" id="confpassword" placeholder="Re-enter New Password"
+                        required>
+                </div>
+                <h5 id="error-message1"></h5>
+                <div class="align-cent">
+                    <input class="align-cent" id="password-submit" type="submit" name="submit" value="Submit">
+                </div>
+
             </form>
             <div class="align-cent">
                 <h5>Existing User?</h5>

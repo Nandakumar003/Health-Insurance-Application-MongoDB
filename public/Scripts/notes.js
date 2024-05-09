@@ -1,5 +1,3 @@
-
-import { fetchData } from "./main.js"
 // Notes List form
 let num = 1;
 document.getElementById("notes-list").addEventListener('submit', AddNotes);

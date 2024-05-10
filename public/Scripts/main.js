@@ -7,9 +7,11 @@ if (getCurrentUser()) {
   <li><a href="notes.html">Take Notes</a></li>
   <li><a href="reset.html">Reset</a></li>
   <li><a id="log-out" href="index.html">Log out</a></li>
-  
-</ul>
+  </ul>
   `
+  var userData = JSON.parse(localStorage.getItem('user'))
+  document.getElementById("welcome-banner").innerHTML = `Hi <span style="color: blue">${userData.LastName}, ${userData.FirstName}</span>. Welcome to Nanda Health Insurance. &#128522;`
+
 } else {
   nav.innerHTML = `
   <ul>
@@ -19,6 +21,7 @@ if (getCurrentUser()) {
   <li><a href="reset.html">Reset</a></li>
 </ul>
   `
+  document.getElementById("welcome-banner").innerHTML = "Welcome to Nanda Health Insurance. &#128522"
 }
 function setCurrentUser(user) {
   localStorage.setItem('user', JSON.stringify(user))
@@ -38,6 +41,9 @@ if (p1) {
   p1.addEventListener('click', logout)
   function logout(e) {
     e.preventDefault();
+    var userData = JSON.parse(localStorage.getItem('user'))
+    alert(`Thanks for visiting the site ${userData.LastName}, ${userData.FirstName}. See you again.`);
+
     removeUser();
   }
 }

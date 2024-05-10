@@ -22,7 +22,7 @@ function ResetCredentials(e) {
         })
         .then(data => {
             // Handle the response data
-            setCurrentUser(data)
+            setCurrentUser(data[0])
             document.getElementById("usernameoremail").disabled = true;
             document.getElementById("submit").disabled = true;
             document.getElementById("submit").style.opacity = 0.6;
@@ -86,7 +86,7 @@ if (getCurrentUser()) {
             }
             else {
 
-                if (pass === userData[0].Password) {
+                if (pass === userData.Password) {
                     mydiv.innerHTML = "New password cannot be the same as your old password! &#129488"
                     mydiv.style.color = "red";
                     ButtonStatus(false)
@@ -169,7 +169,7 @@ document.getElementById("password-form").addEventListener('submit', UpdatePasswo
 function UpdatePassword(e) {
     e.preventDefault();
     var formData = {
-        Username: userData[0].Username,
+        Username: userData.Username,
         Password: document.getElementById("confpassword").value
     };
     // make a call to the server

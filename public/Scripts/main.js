@@ -6,6 +6,7 @@ if (getCurrentUser()) {
   <li><a href="notes.html">Take Notes</a></li>
   <li><a href="reset.html">Reset</a></li>
   <li><a id="log-out" href="index.html">Log out</a></li>
+  <li><a id="profileLink" href="userprofile.html">View Profile</a></li>
 </ul>
   `
 } else {

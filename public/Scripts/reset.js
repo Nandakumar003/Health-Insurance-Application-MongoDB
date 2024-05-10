@@ -22,7 +22,7 @@ function ResetCredentials(e) {
         })
         .then(data => {
             // Handle the response data
-            setCurrentUser(data[0])
+            setTempUser(data[0])
             document.getElementById("usernameoremail").disabled = true;
             document.getElementById("submit").disabled = true;
             document.getElementById("submit").style.opacity = 0.6;
@@ -30,7 +30,6 @@ function ResetCredentials(e) {
             err.innerHTML = `Hi, ${data[0].LastName}, ${data[0].FirstName}. Please proceed in reseting your password`
             err.style.color = "green"
             document.getElementById("password-form").style.display = 'block'
-            let prevpassword = data[0].Password;
         })
         .catch(error => {
             // Handle errors
@@ -38,8 +37,8 @@ function ResetCredentials(e) {
             err.innerHTML = `${error.message}`
         });
 }
-var userData = JSON.parse(localStorage.getItem('user'))
-if (getCurrentUser()) {
+var userData = JSON.parse(localStorage.getItem('tempuser'))
+if (getTempUser()) {
     document.getElementById("password").addEventListener("input", function () {
         var pass = document.getElementById("password").value
         var confpass = document.getElementById("confpassword").value;
@@ -86,7 +85,7 @@ if (getCurrentUser()) {
             }
             else {
 
-                if (pass === userData.Password) {
+                if (pass == userData.Password) {
                     mydiv.innerHTML = "New password cannot be the same as your old password! &#129488"
                     mydiv.style.color = "red";
                     ButtonStatus(false)
@@ -158,9 +157,23 @@ function getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'))
 }
 
+
 function removeUser() {
     localStorage.removeItem('user')
     window.location.href = 'index.html'
+}
+
+function setTempUser(tempuser) {
+    localStorage.setItem('tempuser', JSON.stringify(tempuser))
+}
+
+function getTempUser() {
+    return JSON.parse(localStorage.getItem('tempuser'))
+}
+
+
+function removeTempUser() {
+    localStorage.removeItem('tempuser')
 }
 
 
@@ -168,6 +181,7 @@ function removeUser() {
 document.getElementById("password-form").addEventListener('submit', UpdatePassword);
 function UpdatePassword(e) {
     e.preventDefault();
+    var userData = JSON.parse(localStorage.getItem('tempuser'))
     var formData = {
         Username: userData.Username,
         Password: document.getElementById("confpassword").value
@@ -177,6 +191,7 @@ function UpdatePassword(e) {
         .then(data => {
             if (!data.message) {
                 setCurrentUser(data)
+                removeTempUser()
                 window.location.href = "index.html"
             }
         })

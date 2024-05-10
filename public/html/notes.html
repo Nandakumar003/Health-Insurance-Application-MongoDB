@@ -28,14 +28,19 @@
         <div class="main-container">
             <form class="user-form" id="notes-list" action="login.php" method="POST">
                 <h1>Enter your Notes</h1>
-                <textarea name="userNotes" id="userNotes" placeholder="Enter Your Notes" rows="9" cols="40" resize:none
-                    required></textarea>
+                <textarea name="userNotes" id="userNotes" placeholder="Enter Your Notes" rows="9" cols="40"
+                    resize:none></textarea>
                 <div class="align-cent">
                     <input class="align-cent" id="add-note" type="submit" value="Add Note">
                 </div>
                 <h5 id="error-message"></h5>
             </form>
+            <div class="align-cent">
+                <button class="align-cent" onclick="GetPreviousNotes()">Get Previous Notes</button>
+            </div>
+            <div id="table-container"></div>
         </div>
+
     </main>
 
     <footer>

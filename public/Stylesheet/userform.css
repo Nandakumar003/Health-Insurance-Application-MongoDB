@@ -39,7 +39,8 @@ body {
         box-sizing: border-box;
     }
 
-    input[type="submit"] {
+    input[type="submit"],
+    button {
         padding: 10px 25px;
         background-color: #007bff;
         color: #fff;
@@ -52,4 +53,26 @@ body {
     textarea {
         resize: none;
     }
+}
+
+button {
+    padding: 10px 25px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
 }

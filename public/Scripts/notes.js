@@ -21,7 +21,7 @@ function AddNotes(e) {
     else {
         const usernotes =
         {
-            UserId: userData[0].UserID,
+            UserId: userData.UserID,
             NotesId: `Note-${num}`,
             NotesDetail: notesdetails
         }
@@ -48,7 +48,7 @@ function AddNotes(e) {
 function GetPreviousNotes() {
     var userData = JSON.parse(localStorage.getItem('user'))
     var queryParams = {
-        UserId: userData[0].UserID
+        UserId: userData.UserID
     }
     let err = document.getElementById("error-message")
     const url = '/notes/GetUserNotes';

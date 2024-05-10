@@ -1,3 +1,7 @@
+window.onload = function () {
+    document.getElementById('profileLink').click();
+}
+
 function populateProfileDetails(profileData) {
     const profileDetailsDiv = document.getElementById('profileDetails');
     profileDetailsDiv.innerHTML = '<h2>Profile Details</h2>';

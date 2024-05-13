@@ -1,5 +1,4 @@
-body 
-{
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -11,158 +10,154 @@ body
     background-attachment: fixed;
 }
 
-.main-container 
-{
-    width: 100%; 
+.main-container {
+    width: 100%;
     margin: 100px auto;
     padding: 20px;
     background-color: #fff;
-    border-radius: 8px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);  
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
-.article-styling
-{
+
+.article-styling {
     margin: 5px 0px;
     border: 1px #ccc solid;
     border-left: 5px solid #286ce2;
     padding: 10px;
     border-radius: 15px;
-    width:95%
+    width: 95%
 }
-.article-styling h2
-{
+
+.article-styling h2 {
     color: #286ce2;
 
 }
-a
-{
+
+a {
     text-decoration: none;
 }
 
-h1 
-{
+h1 {
     text-align: center;
     color: #333;
     font-size: 16px;
 }
-h2
-{
+
+h2 {
     color: #286ce2;
     font-size: 18px;
 }
 
-#main-header
-{
+#main-header {
     display: flex;
     align-items: center;
     width: 100%;
     background-color: #fff;
-    padding:5px;
+    padding: 5px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     border-top: 3px solid #286ce2;
     top: 0px;
     z-index: 1000;
-    position:fixed;
+    position: fixed;
 }
-#main-header a{
+
+#main-header a {
     text-align: center;
 }
-#main-header img
-{
+
+#main-header img {
     width: 50px;
     height: 50px;
     /* float: left; */
 }
-#main-footer
-{
+
+#main-footer {
     width: 100%;
     background-color: #fff;
-    padding:1px; 
+    padding: 1px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     text-align: center;
 }
 
-#main-nav
-{
+#main-nav {
     background-color: #286ce2;
-    padding:5px;
+    padding: 5px;
     top: 60px;
     width: 100%;
-    position:fixed;
+    position: fixed;
     border-radius: 5px;
 }
 
-#main-nav ul
-{
+#main-nav ul {
     list-style: none;
     padding: 0px;
 }
-#main-nav ul li
-{
-    display: inline-block; 
+
+#main-nav ul li {
+    display: inline-block;
     position: relative;
 }
- #main-nav a
-{
+
+#main-nav a {
     color: #fff;
     padding-right: 15px;
     font-size: 16px;
 }
-#main-nav a:hover
-{
+
+#main-nav a:hover {
     padding: 10px;
     background-color: #f2f2f2;
     color: black;
     border-radius: 8px;
     box-shadow: 0 0 5px rgba(255, 0, 0, 0.884);
 }
-.categories{
+
+.categories {
     border: 1px #ccc solid;
     padding: 10px;
     border-left: 5px solid #286ce2;
     border-radius: 15px;
-    width:30%
-    
+    width: 30%
 }
-.categories ul
-{
+
+.categories ul {
     padding: 0px;
     padding-left: 20px;
     list-style: none;
 }
-.categories li
-{
+
+.categories li {
     padding-bottom: 8px;
-    border-bottom:dotted 1px #333;
-    list-style-image:url(../images/check.webp) ;
+    border-bottom: dotted 1px #333;
+    list-style-image: url(../images/check.webp);
 }
-.categories a
-{
+
+.categories a {
     color: black;
 }
-.categories a:hover
-{
+
+.categories a:hover {
     background-color: #f2f2f2;
     color: hotpink;
     padding: 5px;
     box-shadow: 0 0 -5px rgba(0, 0, 0, 0.4);
 }
-.article-styling a
-{
+
+.article-styling a {
     background-color: #286ce2;
     font-size: 12px;
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
 }
-.article-styling a:hover
-{
-    background-color: blue; 
+
+.article-styling a:hover {
+    background-color: blue;
 }
-.green-button a
-{
+
+.green-button a {
     background-color: #42B72A;
     font-size: 12px;
     color: white;
@@ -170,46 +165,45 @@ h2
     border-radius: 5px;
 }
 
-.red-button a
-{
-    margin-top:50px;
+.red-button a {
+    margin-top: 50px;
     background-color: #ec0c0c;
     font-size: 12px;
     color: white;
     padding: 10px 15px;
     border-radius: 5px;
 }
-.orange-button a
-{
+
+.orange-button a {
     background-color: #f89808;
-    font-size:12px;
+    font-size: 12px;
     color: white;
-    padding:10px 15px;
-    border-radius:5px;
+    padding: 10px 15px;
+    border-radius: 5px;
 }
-.blue-button a
-{
-    margin:20px 0px;
+
+.blue-button a {
+    margin: 20px 0px;
     background-color: #007bff;
-    font-size:12px;
+    font-size: 12px;
     color: #fff;
-    border-radius:10px;
+    border-radius: 10px;
     padding: 10px 15px;
 }
-.feedback-button a
-{
+
+.feedback-button a {
     margin: 20px 0px;
-    background-color: rgba(25,54, 115, 1);
-    font-size:12px;
+    background-color: rgba(25, 54, 115, 1);
+    font-size: 12px;
     color: #fff;
     font-size: 16px;
     padding: 10px 15px;
 }
-.fixed-anticlockwise90
-{
-    position: fixed;  
-    display: inline-block; 
-    right:-25px;
-    top: 450px; 
+
+.fixed-anticlockwise90 {
+    position: fixed;
+    display: inline-block;
+    right: -25px;
+    top: 450px;
     transform: rotate(90deg);
 }

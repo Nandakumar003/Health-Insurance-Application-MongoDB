@@ -7,6 +7,7 @@ if (getCurrentUser()) {
   <li><a href="notes.html">Take Notes</a></li>
   <li><a href="reset.html">Reset</a></li>
   <li><a id="log-out" href="index.html">Log out</a></li>
+  <li><a id="deleteAccountLink" href="" onclick="confirmDelete()">Delete Account</a></li>
   </ul>
   `
   var userData = JSON.parse(localStorage.getItem('user'))
@@ -45,5 +46,21 @@ if (p1) {
     alert(`Thanks for visiting the site ${userData.LastName}, ${userData.FirstName}. See you again.`);
 
     removeUser();
+  }
+}
+
+function confirmDelete() {
+  // Display confirmation dialog
+  const result = confirm('Are you sure you want to delete your account?');
+
+  // Check user's choice
+  if (result) {
+    // User clicked OK
+    alert('Account deleted successfully.');
+    // Redirect to home page
+    window.location.href = 'index.html';
+  } else {
+    // User clicked Cancel or closed the dialog
+    // Do nothing or any other action you want
   }
 }

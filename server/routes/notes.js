@@ -22,7 +22,7 @@ router
                 res.send(notes)
             }
             else {
-                throw Error`The user doesn't exist or There are no notes for this User!!`
+                throw Error`There is no notes !!`
             }
         } catch (err) {
             res.status(401).send({ message: err.message })

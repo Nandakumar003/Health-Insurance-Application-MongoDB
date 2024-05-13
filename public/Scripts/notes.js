@@ -58,7 +58,7 @@ function GetPreviousNotes() {
     fetch(fullUrl)
         .then(response => {
             if (!response.ok) {
-                throw new Error(`The user doesn't exist or There are no notes for this User! &#128577`);
+                throw new Error(`There are no notes added by you!! &#128577`);
             }
             return response.json();
         })

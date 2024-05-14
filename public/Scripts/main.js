@@ -49,17 +49,40 @@ if (p1) {
   }
 }
 
+
 function confirmDelete() {
   const result = confirm('Are you sure you want to delete your account?');
-  // Check user's choice
   if (result) {
-    // User clicked OK
-    alert('Account deleted successfully.');
-    localStorage.removeItem('tempuser')
-    removeUser()
-
+    let formData = JSON.parse(localStorage.getItem('user'));
+    fetchData('/users/remove', formData, 'DELETE')
+      .then(data => {
+        if (data.success) {
+          alert('Account deleted successfully.');
+          removeUser();
+        }
+      })
+      .catch(err => {
+        let error = document.getElementById("error-message")
+        error.style.color = "red";
+        error.innerHTML = `${err.message}`
+      })
   } else {
     // User clicked Cancel or closed the dialog
     // Do nothing or any other action you want
+  }
+}
+
+async function fetchData(route = '', data = {}, methodType) {
+  const response = await fetch(`http://localhost:3000${route}`, {
+    method: methodType, // *POST, PUT, DELETE, etc.
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  if (response.ok) {
+    return await response.json(); // parses JSON response into native JavaScript objects
+  } else {
+    throw await response.json();
   }
 }

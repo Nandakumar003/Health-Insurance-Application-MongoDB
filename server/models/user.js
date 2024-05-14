@@ -106,10 +106,19 @@ async function editPassword(user) {
 // DELETE in CRUD
 async function deleteAccount(user) {
   let sql = `
+    SELECT * FROM UserData
+    WHERE UserID = ${user.UserID}
+  `
+  let p = await con.query(sql)
+  if (p.length > 0) {
+    sql = `
     DELETE FROM UserData
     WHERE UserID = ${user.UserID}
   `
-  await con.query(sql)
+    await con.query(sql)
+  }
+  else {
+    throw Error(`User '${user.UserID}', doesn't Exist!!`)
+  }
 }
-
 module.exports = { getAllUsers, getUserData, userExists, emailExists, login, register, editUsername, deleteAccount, editPassword }

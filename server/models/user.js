@@ -26,7 +26,7 @@ async function getUserData(user) {
   let sql = `SELECT * FROM UserData 
     WHERE Username = "${user.username}" OR Email = "${user.useremail}" OR UserID ="${user.userid}";`
   let p1 = await con.query(sql)
-  if (p1.length == 0) throw Error("Username/Email doesn't exist!! &#128577")
+  if (p1.length == 0) throw Error("Username/Email doesn't exist!!")
   return p1
 }
 
@@ -92,15 +92,19 @@ async function editUsername(user) {
 }
 
 async function editPassword(user) {
-  let sql = `
+  let updatedUser = await userExists(user.Username)
+  if (updatedUser.length > 0) {
+    let sql = `
     UPDATE UserData SET
     Password  = "${user.Password}"
     WHERE Username = "${user.Username}";
   `
-  await con.query(sql)
-
-  let updatedUser = await userExists(user.Username)
-  return updatedUser[0]
+    await con.query(sql)
+    return updatedUser[0]
+  }
+  else {
+    throw Error(`User doesn't Exist.!!`)
+  }
 }
 
 // DELETE in CRUD

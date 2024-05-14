@@ -51,7 +51,7 @@ router
     .put('/updatepassword', async (req, res) => {
         try {
             let updatedUser = await User.editPassword(req.body)
-            res.send(updatedUser)
+            res.send({ ...updatedUser, Password: undefined })
         } catch (err) {
             res.status(401).send({ message: err.message })
         }

@@ -1,5 +1,7 @@
+require("dotenv").config();
 const express = require('express');
 const app = express();
+const mongoose = require("mongoose");
 const path = require('path')
 
 app.use(express.json()); // parses JSON bodies
@@ -7,6 +9,12 @@ app.use(express.json()); // parses JSON bodies
 
 const userRoutes = require("./server/routes/user");
 const userNotes = require("./server/routes/notes");
+
+
+mongoose.connect(process.env.dbURL)
+    .then(console.log("Successfully Connected to Mongo DB!!"))
+    .catch(error => console.log(error));
+
 
 //CORS middleware
 app.use(function (req, res, next) {

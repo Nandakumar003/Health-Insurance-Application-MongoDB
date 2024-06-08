@@ -9,7 +9,7 @@ app.use(express.json()); // parses JSON bodies
 
 const userRoutes = require("./server/routes/user");
 const userNotes = require("./server/routes/notes");
-
+const userRoutes_Mongo = require("./server/routes/user_mongo");
 
 mongoose.connect(process.env.dbURL)
     .then(console.log("Successfully Connected to Mongo DB!!"))
@@ -30,6 +30,7 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname + "/public/html/inde
 
 app.use("/users", userRoutes);
 app.use("/notes", userNotes);
+app.use("/users_mongo", userRoutes_Mongo);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}!!!`));

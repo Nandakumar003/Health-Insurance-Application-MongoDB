@@ -30,6 +30,10 @@ async function register(FirstName, LastName, Username, Email, Password) {
     return newUser;
 }
 
+// GET all Users
+async function getAllUsers() {
+    return await User.collection.find({})
+}
 // READ a user
 async function login(Username, Password) {
     const user = await getUser(Username);
@@ -57,5 +61,5 @@ async function getUser(Username) {
 
 // 5. export all functions we want to access in route files
 module.exports = {
-    register, login, updatePassword, deleteUser
+    register, login, updatePassword, deleteUser, getAllUsers
 };

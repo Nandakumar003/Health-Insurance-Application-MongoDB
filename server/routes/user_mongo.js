@@ -5,6 +5,14 @@ const router = express.Router();
 
 // 2. create all routes to access database
 router
+    .get('/getUsers', async (req, res) => {
+        try {
+            const users = await User.getAllUsers() // Exclude the password field
+            res.send(users);
+        } catch (err) {
+            res.status(401).send({ message: err.message })
+        }
+    })
     .post('/login', async (req, res) => {
         try {
             const user = await User.login(req.body.Username, req.body.Password);

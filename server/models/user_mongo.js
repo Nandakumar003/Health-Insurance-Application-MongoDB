@@ -32,8 +32,13 @@ async function register(FirstName, LastName, Username, Email, Password) {
 
 // GET all Users
 async function getAllUsers() {
-    return await User.collection.find({})
+    const database = client.db('test');
+    const collection = database.collection('users');
+    const users = await collection.find().toArray()
+    console.log(users);
+    return users;
 }
+
 // READ a user
 async function login(Username, Password) {
     const user = await getUser(Username);

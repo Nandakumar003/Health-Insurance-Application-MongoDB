@@ -1,10 +1,8 @@
-import { fetchData } from "../../main.js";
+import { fetchData } from "../../main.js"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-
-    const navigate = useNavigate();
 
     const [user, setUser] = useState({
         username: '',
@@ -21,7 +19,7 @@ const Register = () => {
         fetchData("/users_mongo/register", user, "POST")
             .then((data) => {
                 if (!data.message) {
-                    navigate("/books");
+                    console.log(data);
                 }
             })
             .catch((error) => {

@@ -1,6 +1,6 @@
 // 1. import any needed libraries
 const express = require("express");
-const User = require('../models/user_mongo'); //accesses functions in user model file
+const User = require('../models/user'); //accesses functions in user model file
 const router = express.Router();
 
 // 2. create all routes to access database

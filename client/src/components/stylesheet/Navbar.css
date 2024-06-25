@@ -1,14 +1,14 @@
-.navbar .nav-link.active {
-    font-weight: bold;
-    color: red;
+.navbar {
+    background-color: #2196f3;
+
 }
 
-.navbar .navbar-brand,
-.navbar .nav-link {
-    font-size: 1rem;
+.navbar-brand,
+.nav-link {
+    color: white;
 }
 
-.navbar .navbar-brand.active {
+.navbar-brand.active,
+.nav-link.active {
     font-weight: bold;
-    color: red;
 }

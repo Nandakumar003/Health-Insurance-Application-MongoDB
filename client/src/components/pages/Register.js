@@ -1,6 +1,5 @@
 //import { fetchData } from "../../main.js"
 import { useState } from "react";
-
 const Register = () => {
     const [user, setUser] = useState({
         FirstName: '',
@@ -41,7 +40,7 @@ const Register = () => {
     }
     return (
         <div className="w-50">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} class="user-form" id="newuser-registration">
                 <div className="mb-3">
                     <label htmlFor="FirstName" className="form-label">First Name</label>
                     <input
@@ -50,6 +49,7 @@ const Register = () => {
                         id="FirstName"
                         name='FirstName'
                         value={FirstName}
+                        placeholder="First Name"
                         onChange={onChange}
                         required />
                 </div>
@@ -60,6 +60,7 @@ const Register = () => {
                         className="form-control"
                         id="LastName"
                         name='LastName'
+                        placeholder="Last Name"
                         value={LastName}
                         onChange={onChange}
                         required />
@@ -71,6 +72,7 @@ const Register = () => {
                         className="form-control"
                         id="Email"
                         name='Email'
+                        placeholder="Email"
                         value={Email}
                         onChange={onChange}
                         required />
@@ -83,6 +85,7 @@ const Register = () => {
                         id="Username"
                         name='Username'
                         value={Username}
+                        placeholder="Username"
                         onChange={onChange}
                         required />
                 </div>
@@ -95,6 +98,7 @@ const Register = () => {
                         id="Password"
                         value={Password}
                         onChange={onChange}
+                        placeholder="Password"
                         required />
                 </div>
                 <div className="mb-3">
@@ -105,6 +109,7 @@ const Register = () => {
                         id="ConfPassword"
                         name="ConfPassword"
                         value={ConfPassword}
+                        placeholder="Re-enter Password"
                         onChange={onChange}
                         required />
                 </div>

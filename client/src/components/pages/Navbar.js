@@ -1,9 +1,10 @@
 import { Outlet, NavLink } from "react-router-dom";
-import '../stylesheet/Navbar.css'
+import '../stylesheet/Navbar.css';
+
 const Navbar = () => {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div className="container-fluid">
                     <NavLink
                         className={({ isActive }) => isActive ? "navbar-brand active" : "navbar-brand"}

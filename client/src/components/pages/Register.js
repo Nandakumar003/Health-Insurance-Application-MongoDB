@@ -13,7 +13,7 @@ const Register = () => {
     });
     const { FirstName, LastName, Username, Email, Password } = user;
 
-    const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value })
+    const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
     // const onSubmit = (e) => {
     //     e.preventDefault();

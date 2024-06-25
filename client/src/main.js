@@ -10,6 +10,6 @@ export async function fetchData(route = '', data = {}, methodType) {
     if (response.ok) {
         return await repsonse.json();
     } else {
-        throw await response.json();
+        throw response.json();
     }
 }

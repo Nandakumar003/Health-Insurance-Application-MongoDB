@@ -1,4 +1,4 @@
-// import { fetchData } from "../../main.js"
+import { fetchData } from "../../main.js"
 import { useState } from "react";
 
 const Register = () => {
@@ -21,10 +21,22 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (true) {
+        if (false) {
             setErrorMessage("Error Occured!!!");
         } else {
             setErrorMessage(null);
+            const onSubmit = (e) => {
+                e.preventDefault();
+                fetchData("/user/register", user, "POST")
+                    .then((data) => {
+                        if (!data.message) {
+                            console.log(data);
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(`Error! ${error.message}`)
+                    });
+            };
         }
     }
     return (

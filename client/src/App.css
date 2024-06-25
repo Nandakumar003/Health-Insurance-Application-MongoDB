@@ -3,6 +3,15 @@ body {
   background-color: #f2f2f2;
 }
 
+.Footer {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

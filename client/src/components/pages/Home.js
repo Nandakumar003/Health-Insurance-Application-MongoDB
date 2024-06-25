@@ -71,7 +71,11 @@ const Home = () => {
                         <a href="https://www.investopedia.com/terms/p/pointofservice-plan-pos.asp" target="_blank">Read More</a>
                     </article>
                 </div>
+
             </main>
+            <footer className="Footer">
+                <p>&copy; 2024 <strong>Nanda Health Insurance Pvt Ltd</strong>. All Rights Reserved.</p>
+            </footer>
         </div>
     );
 }

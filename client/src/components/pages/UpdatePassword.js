@@ -37,37 +37,41 @@ const Password = () => {
         }
     }
     return (
+        <div>
+            <div className="container mt-4" style={{ width: '50%', padding: '10px' }}>
+                <Helmet>
+                    <title>NHI - Update Password</title>
+                </Helmet>
+                <form onSubmit={handleSubmit} className="card" style={{ width: '80%', padding: '10px' }}>
+                    <br></br>
+                    <h2 className="text-center">Update Password</h2>
 
-        <div className="container mt-4" style={{ width: '50%', padding: '10px' }}>
-            <Helmet>
-                <title>NHI - Update Password</title>
-            </Helmet>
-            <form onSubmit={handleSubmit} className="card" style={{ width: '80%', padding: '10px' }}>
-                <br></br>
-                <h2 className="text-center">Update Password</h2>
-
-                <div className="mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Enter New Password"
-                        id="Password"
-                        name='Password'
-                        onChange={onChange}
-                        required />
-                </div>
-                <div className="mb-3">
-                    <input
-                        type="password"
-                        className="form-control"
-                        name='ConfPassword'
-                        id="ConfPassword"
-                        placeholder="Re-Enter Password"
-                        onChange={onChange}
-                        required />
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter New Password"
+                            id="Password"
+                            name='Password'
+                            onChange={onChange}
+                            required />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="password"
+                            className="form-control"
+                            name='ConfPassword'
+                            id="ConfPassword"
+                            placeholder="Re-Enter Password"
+                            onChange={onChange}
+                            required />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <footer className="Footer">
+                <p>&copy; 2024 <strong>Nanda Health Insurance Pvt Ltd</strong>. All Rights Reserved.</p>
+            </footer>
         </div >
     );
 }

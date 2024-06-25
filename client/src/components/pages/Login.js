@@ -38,36 +38,41 @@ const Login = () => {
         }
     }
     return (
-        <div className="container mt-4" style={{ width: '50%', padding: '10px' }}>
-            <Helmet>
-                <title>NHI - Login</title>
-            </Helmet>
-            <form onSubmit={handleSubmit} className="card" style={{ width: '80%', padding: '10px' }}>
-                <div className="mb-3">
-                    <br></br>
-                    <h2 className="text-center">User Login</h2>
+        <div>
+            <div className="container mt-4" style={{ width: '50%', padding: '10px' }}>
+                <Helmet>
+                    <title>NHI - Login</title>
+                </Helmet>
+                <form onSubmit={handleSubmit} className="card" style={{ width: '80%', padding: '10px' }}>
+                    <div className="mb-3">
+                        <br></br>
+                        <h2 className="text-center">User Login</h2>
 
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Username/Email"
-                        id="Username"
-                        name='Username'
-                        onChange={onChange}
-                        required />
-                </div>
-                <div className="mb-3">
-                    <input
-                        type="password"
-                        className="form-control"
-                        name='Password'
-                        id="Password"
-                        placeholder="Enter Password"
-                        onChange={onChange}
-                        required />
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Username/Email"
+                            id="Username"
+                            name='Username'
+                            onChange={onChange}
+                            required />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="password"
+                            className="form-control"
+                            name='Password'
+                            id="Password"
+                            placeholder="Enter Password"
+                            onChange={onChange}
+                            required />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <footer className="Footer">
+                <p>&copy; 2024 <strong>Nanda Health Insurance Pvt Ltd</strong>. All Rights Reserved.</p>
+            </footer>
         </div >
     );
 }

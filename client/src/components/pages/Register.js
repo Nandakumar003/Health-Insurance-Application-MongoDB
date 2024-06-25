@@ -49,84 +49,88 @@ const Register = () => {
         }
     }
     return (
+        <div>
+            <div className="container mt-4" style={{ width: '50%', padding: '10px' }}>
+                <Helmet>
+                    <title>NHI - Register</title>
+                </Helmet>
+                <form onSubmit={handleSubmit} className="card" style={{ width: '80%', padding: '10px' }}>
 
-        <div className="container mt-4" style={{ width: '50%', padding: '10px' }}>
-            <Helmet>
-                <title>NHI - Register</title>
-            </Helmet>
-            <form onSubmit={handleSubmit} className="card" style={{ width: '80%', padding: '10px' }}>
-
-                <div className="mb-3">
-                    <br></br>
-                    <h2 className="text-center"> New User Registration</h2>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="FirstName"
-                        name='FirstName'
-                        value={FirstName}
-                        placeholder="First Name"
-                        onChange={onChange}
-                        required />
-                </div>
-                <div className="mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="LastName"
-                        name='LastName'
-                        placeholder="Last Name"
-                        value={LastName}
-                        onChange={onChange}
-                        required />
-                </div>
-                <div className="mb-3">
-                    <input
-                        type="email"
-                        className="form-control"
-                        id="Email"
-                        name='Email'
-                        placeholder="Email"
-                        value={Email}
-                        onChange={onChange}
-                        required />
-                </div>
-                <div className="mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="Username"
-                        name='Username'
-                        value={Username}
-                        placeholder="Username"
-                        onChange={onChange}
-                        required />
-                </div>
-                <div className="mb-3">
-                    <input
-                        type="password"
-                        className="form-control"
-                        name='Password'
-                        id="Password"
-                        value={Password}
-                        onChange={onChange}
-                        placeholder="Password"
-                        required />
-                </div>
-                <div className="mb-3">
-                    <input
-                        type="password"
-                        className="form-control"
-                        id="ConfPassword"
-                        name="ConfPassword"
-                        value={ConfPassword}
-                        placeholder="Re-enter Password"
-                        onChange={onChange}
-                        required />
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-                {errorMessage && <div className="alert alert-danger mt-3">{errorMessage}</div>}
-            </form>
+                    <div className="mb-3">
+                        <br></br>
+                        <h2 className="text-center"> New User Registration</h2>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="FirstName"
+                            name='FirstName'
+                            value={FirstName}
+                            placeholder="First Name"
+                            onChange={onChange}
+                            required />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="LastName"
+                            name='LastName'
+                            placeholder="Last Name"
+                            value={LastName}
+                            onChange={onChange}
+                            required />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="email"
+                            className="form-control"
+                            id="Email"
+                            name='Email'
+                            placeholder="Email"
+                            value={Email}
+                            onChange={onChange}
+                            required />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="Username"
+                            name='Username'
+                            value={Username}
+                            placeholder="Username"
+                            onChange={onChange}
+                            required />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="password"
+                            className="form-control"
+                            name='Password'
+                            id="Password"
+                            value={Password}
+                            onChange={onChange}
+                            placeholder="Password"
+                            required />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="password"
+                            className="form-control"
+                            id="ConfPassword"
+                            name="ConfPassword"
+                            value={ConfPassword}
+                            placeholder="Re-enter Password"
+                            onChange={onChange}
+                            required />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                    {errorMessage && <div className="alert alert-danger mt-3">{errorMessage}</div>}
+                </form>
+            </div>
+            <footer className="Footer">
+                <p>&copy; 2024 <strong>Nanda Health Insurance Pvt Ltd</strong>. All Rights Reserved.</p>
+            </footer>
         </div>
     );
 }

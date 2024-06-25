@@ -13,26 +13,32 @@ const UserDetailContainer = () => {
     }, []);
 
     return (
-        <div className="container mt-4">
-            <Helmet>
-                <title>NHI - Profile</title>
-            </Helmet>
+        <div>
+            <div className="container mt-4" style={{ width: '50%', padding: '10px' }}>
+                <Helmet>
+                    <title>NHI - Profile</title>
+                </Helmet>
 
-            {userData ? (
-                <div className="card">
-                    <h2 className="text-center">User Details</h2>
-                    <div className="card-body">
-                        <p><strong>First Name:</strong> {userData.FirstName}</p>
-                        <p><strong>Last Name:</strong> {userData.LastName}</p>
-                        <p><strong>Username:</strong> {userData.Username}</p>
-                        <p><strong>Email:</strong> {userData.Email}</p>
+                {userData ? (
+                    <div className="card">
+                        <br></br>
+                        <h2 className="text-center">User Details</h2>
+                        <div className="card-body">
+                            <p><strong>First Name:</strong> {userData.FirstName}</p>
+                            <p><strong>Last Name:</strong> {userData.LastName}</p>
+                            <p><strong>Username:</strong> {userData.Username}</p>
+                            <p><strong>Email:</strong> {userData.Email}</p>
+                        </div>
                     </div>
-                </div>
-            ) : (
-                <div className="alert alert-warning" role="alert">
-                    No user data found in local storage.
-                </div>
-            )}
+                ) : (
+                    <div className="alert alert-warning" role="alert">
+                        No user data found in local storage.
+                    </div>
+                )}
+            </div>
+            <footer className="Footer">
+                <p>&copy; 2024 <strong>Nanda Health Insurance Pvt Ltd</strong>. All Rights Reserved.</p>
+            </footer>
         </div>
     );
 };

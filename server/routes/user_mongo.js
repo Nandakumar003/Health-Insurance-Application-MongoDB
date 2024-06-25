@@ -5,6 +5,7 @@ const router = express.Router();
 
 // 2. create all routes to access database
 router
+
     .get('/getUsers', async (req, res) => {
         try {
             const users = await User.getAllUsers() // Exclude the password field
@@ -13,19 +14,20 @@ router
             res.status(401).send({ message: err.message })
         }
     })
-    .post('/login', async (req, res) => {
+
+    .post('/register', async (req, res) => {
         try {
-            const user = await User.login(req.body.Username, req.body.Password);
-            res.send({ ...user.toObject(), password: undefined });
+            const user = await User.register(req.body.FirstName, req.body.LastName, req.body.Username, req.body.Email, req.body.Password);
+            res.send({ ...user, Password: undefined });
         } catch (error) {
             res.status(401).send({ message: error.message });
         }
     })
 
-    .post('/register', async (req, res) => {
+    .post('/login', async (req, res) => {
         try {
-            const user = await User.register(req.body.FirstName, req.body.LastName, req.body.Username, req.body.Email, req.body.Password);
-            res.send({ ...user.toObject(), password: undefined });
+            const user = await User.login(req.body.Username, req.body.Password);
+            res.send({ ...user, Password: undefined });
         } catch (error) {
             res.status(401).send({ message: error.message });
         }
@@ -34,7 +36,7 @@ router
     .put('/update', async (req, res) => {
         try {
             const user = await User.updatePassword(req.body.id, req.body.Password);
-            res.send({ ...user.toObject(), Password: undefined });
+            res.send({ ...user, Password: undefined });
         } catch (error) {
             res.status(401).send({ message: error.message });
         }

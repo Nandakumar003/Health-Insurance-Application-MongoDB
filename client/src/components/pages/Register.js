@@ -7,7 +7,8 @@ const Register = () => {
         LastName: '',
         Username: '',
         Email: '',
-        Password: ''
+        Password: '',
+        ConfPassword: ''
     });
     const { FirstName, LastName, Username, Email, Password, ConfPassword } = user;
 
@@ -23,7 +24,7 @@ const Register = () => {
         if (false) {
             setErrorMessage("Error Occured!!!");
         }
-        if (Password !== ConfPassword) { setErrorMessage("Password Don't Match"); }
+        if (Password !== ConfPassword) { setErrorMessage("Password Do not match!!😐"); }
         else {
             setErrorMessage(null);
             //     fetchData("/user/register", user, "POST")

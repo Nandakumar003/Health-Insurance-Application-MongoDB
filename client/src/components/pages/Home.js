@@ -1,8 +1,11 @@
 import '../stylesheet/style.css'
-
+import { Helmet } from 'react-helmet';
 const Home = () => {
     return (
         <div>
+            <Helmet>
+                <title>NHI - Home</title>
+            </Helmet>
             <main>
                 <div class="main-container">
                     <article class="article-styling">

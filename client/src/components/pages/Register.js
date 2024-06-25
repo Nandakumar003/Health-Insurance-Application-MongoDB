@@ -1,6 +1,7 @@
 //import { fetchData } from "../../main.js"
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
 
@@ -48,10 +49,16 @@ const Register = () => {
         }
     }
     return (
-        <div className="w-50">
-            <form onSubmit={handleSubmit} className="user-form" id="newuser-registration">
+
+        <div className="container mt-4" style={{ width: '50%', padding: '10px' }}>
+            <Helmet>
+                <title>NHI - Register</title>
+            </Helmet>
+            <form onSubmit={handleSubmit} className="card" style={{ width: '80%', padding: '10px' }}>
+
                 <div className="mb-3">
                     <br></br>
+                    <h2 className="text-center"> New User Registration</h2>
                     <input
                         type="text"
                         className="form-control"

@@ -1,47 +1,102 @@
-// import { fetchData } from "../../main.js"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 const Reset = () => {
-
     const [user, setUser] = useState({
-        Username: '',
-        Email: ''
+        UsernameOrEmail: '',
+        NewPassword: '',
+        ConfirmPassword: ''
     });
-    const { Username, Email } = user;
+    const [isUserValidated, setIsUserValidated] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
+    const navigate = useNavigate();
 
-    const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value })
+    const { UsernameOrEmail, NewPassword, ConfirmPassword } = user;
 
-    // const onSubmit = (e) => {
-    //     e.preventDefault();
+    const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
-    //     fetchData("/users_mongo/register", user, "POST")
-    //         .then((data) => {
-    //             if (!data.message) {
-    //                 console.log(data);
-    //             }
-    //         })
-    //         .catch((error) => {
-    //             console.log(`Error! ${error.message}`)
-    //         });
-    // };
+    const validateUser = (e) => {
+        e.preventDefault();
+        // Replace this with actual validation logic
+        const userExists = true; // Replace with actual validation check
+        if (userExists) {
+            setIsUserValidated(true);
+            setErrorMessage(null);
+        } else {
+            setErrorMessage("User not found!");
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (NewPassword !== ConfirmPassword) {
+            setErrorMessage("Passwords do not match!");
+            return;
+        }
+        // Replace this with actual password update logic
+        console.log(user);
+        localStorage.setItem('user', JSON.stringify(user));
+        navigate('/');
+        window.location.reload();
+    };
 
     return (
-        <div className="w-50">
-            <form>
+        <div className="container mt-4" style={{ width: '50%', padding: '10px' }}>
+            <Helmet>
+                <title>NHI - Reset</title>
+            </Helmet>
+            <form className="card" style={{ width: '80%', padding: '10px' }}>
                 <div className="mb-3">
-                    <br></br>
+                    <br />
+                    <h2 className="text-center">Reset Credentials</h2>
                     <input
                         type="text"
                         className="form-control"
-                        id="FirstName"
-                        name='FirstName'
-                        placeholder="Username/Email"
-                        required />
+                        id="UsernameOrEmail"
+                        name="UsernameOrEmail"
+                        placeholder="Username or Email"
+                        value={UsernameOrEmail}
+                        onChange={onChange}
+                        required
+                        disabled={isUserValidated}
+                    />
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                {!isUserValidated ? (
+                    <button onClick={validateUser} className="btn btn-primary">Validate</button>
+                ) : (
+                    <>
+                        <div className="mb-3">
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="NewPassword"
+                                name="NewPassword"
+                                placeholder="New Password"
+                                value={NewPassword}
+                                onChange={onChange}
+                                required
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="ConfirmPassword"
+                                name="ConfirmPassword"
+                                placeholder="Confirm Password"
+                                value={ConfirmPassword}
+                                onChange={onChange}
+                                required
+                            />
+                        </div>
+                        <button onClick={handleSubmit} className={`btn ${isUserValidated ? 'btn-success' : 'btn-primary'}`}>Submit</button>
+                    </>
+                )}
+                {errorMessage && <div className="alert alert-danger mt-3">{errorMessage}</div>}
             </form>
-        </div >
+        </div>
     );
 }
+
 export default Reset;

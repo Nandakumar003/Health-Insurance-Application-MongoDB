@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
 
     const [user, setUser] = useState({
-        Firstname: '',
+        FirstName: '',
         LastName: '',
         Username: '',
         Email: '',
         Password: ''
     });
-    const { Firstname, LastName, Username, Email, Password } = user;
+    const { FirstName, LastName, Username, Email, Password } = user;
 
     const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value })
 

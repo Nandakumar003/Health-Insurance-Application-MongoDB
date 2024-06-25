@@ -1,5 +1,5 @@
 import { Outlet, NavLink } from "react-router-dom";
-import '../stylesheet/Navbar.css';
+import '../stylesheet/Navbar.css'
 const Navbar = () => {
     return (
         <div>

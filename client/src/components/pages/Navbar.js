@@ -1,7 +1,26 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import '../stylesheet/Navbar.css';
 
 const Navbar = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        setIsLoggedIn(user !== null);
+    }, []);
+
+    const handleLogout = () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        alert(`Thanks ${user.LastName}, ${user.FirstName}. See You Again 😉`)
+        localStorage.removeItem('user');
+        setIsLoggedIn(false);
+        navigate('/');
+        window.location.reload();
+    };
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -16,34 +35,61 @@ const Navbar = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <NavLink
-                                    className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-                                    to="/Register">
-                                    Register
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink
-                                    className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-                                    to="/Login">
-                                    Login
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink
-                                    className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-                                    to="/Reset">
-                                    Reset
-                                </NavLink>
-                            </li>
+                            {isLoggedIn ? (
+                                <>
+                                    <li className="nav-item">
+                                        <NavLink
+                                            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                                            to="/Profile">
+                                            Profile
+                                        </NavLink>
+                                    </li>
+
+                                    <li className="nav-item">
+                                        <button className="nav-link btn btn-link" onClick={handleLogout}>
+                                            Logout
+                                        </button>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink
+                                            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                                            to="/Reset">
+                                            Update Password
+                                        </NavLink>
+                                    </li>
+                                </>
+                            ) : (
+                                <>
+                                    <li className="nav-item">
+                                        <NavLink
+                                            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                                            to="/Register">
+                                            Register
+                                        </NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink
+                                            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                                            to="/Login">
+                                            Login
+                                        </NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink
+                                            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                                            to="/Reset">
+                                            Reset
+                                        </NavLink>
+                                    </li>
+                                </>
+                            )}
                         </ul>
                     </div>
                 </div>
             </nav>
             <Outlet />
         </div>
-    )
-}
+    );
+};
 
 export default Navbar;

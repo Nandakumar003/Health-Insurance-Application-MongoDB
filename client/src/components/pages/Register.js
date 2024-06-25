@@ -1,6 +1,11 @@
 //import { fetchData } from "../../main.js"
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 const Register = () => {
+
+    const navigate = useNavigate();
+
     const [user, setUser] = useState({
         FirstName: '',
         LastName: '',
@@ -36,11 +41,15 @@ const Register = () => {
             //             console.log(`Error! ${error.message}`)
             //         });
             // };
+            console.log(user);
+            localStorage.setItem('user', JSON.stringify(user));
+            navigate('/');
+            window.location.reload();
         }
     }
     return (
         <div className="w-50">
-            <form onSubmit={handleSubmit} class="user-form" id="newuser-registration">
+            <form onSubmit={handleSubmit} className="user-form" id="newuser-registration">
                 <div className="mb-3">
                     <label htmlFor="FirstName" className="form-label">First Name</label>
                     <input

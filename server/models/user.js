@@ -39,7 +39,7 @@ async function register(FirstName, LastName, Username, Email, Password) {
 async function getAllUsers() {
     const database = client.db('test');
     const collection = database.collection('users');
-    const users = await collection.find().toArray()
+    const users = await collection.getUsers();
     console.log(users);
     return users._doc;
 }

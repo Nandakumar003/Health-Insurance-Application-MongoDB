@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
 
     const [user, setUser] = useState({
-        username: '',
-        password: '',
-        password2: ''
+        Firstname: '',
+        LastName: '',
+        Username: '',
+        Email: '',
+        Password: ''
     });
-    const { username, password, password2 } = user;
+    const { Firstname, LastName, Username, Email, Password } = user;
 
     const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value })
 
@@ -31,28 +33,58 @@ const Register = () => {
         <div>
             <form>
                 <div className="mb-3">
-                    <label for="exampleInputEmail1" className="form-label">Email address</label>
+                    <label for="FirstName" className="form-label">First Name</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="FirstName"
+                        name='FirstName'
+                        required />
+                </div>
+                <div className="mb-3">
+                    <label for="LastName" className="form-label">Last Name</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="LastName"
+                        name='LastName'
+                        required />
+                </div>
+                <div className="mb-3">
+                    <label for="Email" className="form-label">Email</label>
                     <input
                         type="email"
                         className="form-control"
-                        id="exampleInputEmail1"
-                        name='username'
+                        id="Email"
+                        name='Email'
                         required />
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div className="mb-3">
-                    <label hmtlFor="exampleInputPassword1" className="form-label">Password</label>
+                    <label for="Username" className="form-label">Username</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="Username"
+                        name='Username'
+                        required />
+                </div>
+                <div className="mb-3">
+                    <label hmtlFor="Password" className="form-label">Password</label>
                     <input
                         type="password"
                         className="form-control"
-                        id="exampleInputPassword1"
-                        onChange={onChange}
-                        value={password} />
-
+                        name='Password'
+                        id="Password"
+                        required />
                 </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                    <label className="form-check-label" for="exampleCheck1">Check me out</label>
+                <div className="mb-3">
+                    <label hmtlFor="ConfPassword" className="form-label">Confirm Password</label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        id="ConfPassword"
+                        name="ConfPassword"
+                        required />
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>

@@ -1,4 +1,4 @@
-import { fetchData } from "../../main.js"
+//import { fetchData } from "../../main.js"
 import { useState } from "react";
 
 const Register = () => {
@@ -9,7 +9,7 @@ const Register = () => {
         Email: '',
         Password: ''
     });
-    const { FirstName, LastName, Username, Email, Password } = user;
+    const { FirstName, LastName, Username, Email, Password, ConfPassword } = user;
 
     const [errorMessage, setErrorMessage] = useState(null);
 
@@ -20,23 +20,22 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         if (false) {
             setErrorMessage("Error Occured!!!");
-        } else {
+        }
+        if (Password !== ConfPassword) { setErrorMessage("Password Don't Match"); }
+        else {
             setErrorMessage(null);
-            const onSubmit = (e) => {
-                e.preventDefault();
-                fetchData("/user/register", user, "POST")
-                    .then((data) => {
-                        if (!data.message) {
-                            console.log(data);
-                        }
-                    })
-                    .catch((error) => {
-                        console.log(`Error! ${error.message}`)
-                    });
-            };
+            //     fetchData("/user/register", user, "POST")
+            //         .then((data) => {
+            //             if (!data.message) {
+            //                 console.log(data);
+            //             }
+            //         })
+            //         .catch((error) => {
+            //             console.log(`Error! ${error.message}`)
+            //         });
+            // };
         }
     }
     return (
@@ -104,6 +103,7 @@ const Register = () => {
                         className="form-control"
                         id="ConfPassword"
                         name="ConfPassword"
+                        value={ConfPassword}
                         onChange={onChange}
                         required />
                 </div>
@@ -113,5 +113,4 @@ const Register = () => {
         </div>
     );
 }
-
 export default Register;

@@ -2,17 +2,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Password = () => {
 
     const [user, setUser] = useState({
-        Username: '',
-        Email: '',
-        Password: ''
+        Password: '',
+        ConfPassword: ''
     });
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState(null);
 
-    const { Username, Email, Password } = user;
+    const { Password, ConfPassword } = user;
     const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value })
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -40,14 +39,14 @@ const Login = () => {
     return (
         <div className="w-50">
             <form onSubmit={handleSubmit}>
+                <br></br>
                 <div className="mb-3">
-                    <br></br>
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="Username/Email"
-                        id="Username"
-                        name='Username'
+                        placeholder="Enter New Password"
+                        id="Password"
+                        name='Password'
                         onChange={onChange}
                         required />
                 </div>
@@ -55,9 +54,9 @@ const Login = () => {
                     <input
                         type="password"
                         className="form-control"
-                        name='Password'
-                        id="Password"
-                        placeholder="Enter Password"
+                        name='ConfPassword'
+                        id="ConfPassword"
+                        placeholder="Re-Enter Password"
                         onChange={onChange}
                         required />
                 </div>
@@ -67,4 +66,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default Password;

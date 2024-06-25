@@ -51,7 +51,7 @@ const Register = () => {
         <div className="w-50">
             <form onSubmit={handleSubmit} className="user-form" id="newuser-registration">
                 <div className="mb-3">
-                    <label htmlFor="FirstName" className="form-label">First Name</label>
+                    <br></br>
                     <input
                         type="text"
                         className="form-control"
@@ -63,7 +63,6 @@ const Register = () => {
                         required />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="LastName" className="form-label">Last Name</label>
                     <input
                         type="text"
                         className="form-control"
@@ -75,7 +74,6 @@ const Register = () => {
                         required />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="Email" className="form-label">Email</label>
                     <input
                         type="email"
                         className="form-control"
@@ -87,7 +85,6 @@ const Register = () => {
                         required />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="Username" className="form-label">Username</label>
                     <input
                         type="text"
                         className="form-control"
@@ -99,7 +96,6 @@ const Register = () => {
                         required />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="Password" className="form-label">Password</label>
                     <input
                         type="password"
                         className="form-control"
@@ -111,7 +107,6 @@ const Register = () => {
                         required />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="ConfPassword" className="form-label">Confirm Password</label>
                     <input
                         type="password"
                         className="form-control"

@@ -53,7 +53,7 @@ const Navbar = () => {
                                     <li className="nav-item">
                                         <NavLink
                                             className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-                                            to="/Reset">
+                                            to="/Password">
                                             Update Password
                                         </NavLink>
                                     </li>

@@ -30,12 +30,13 @@ const Reset = () => {
         <div className="w-50">
             <form>
                 <div className="mb-3">
-                    <label for="FirstName" className="form-label">Username/Email</label>
+                    <br></br>
                     <input
                         type="text"
                         className="form-control"
                         id="FirstName"
                         name='FirstName'
+                        placeholder="Username/Email"
                         required />
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
@@ -43,5 +44,4 @@ const Reset = () => {
         </div >
     );
 }
-
 export default Reset;

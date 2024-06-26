@@ -19,7 +19,7 @@ router
             const notes = await Note.getAllNotes(); // Assuming getAllNotes method exists in your Note model
             res.send(notes);
         } catch (error) {
-            res.status(500).send({ message: error.message });
+            res.status(401).send({ message: error.message });
         }
     })
     //Update a NOte

@@ -4,12 +4,16 @@ import '../stylesheet/Navbar.css';
 
 const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userName, setUserName] = useState('');
 
     const navigate = useNavigate();
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
-        setIsLoggedIn(user !== null);
+        if (user) {
+            setIsLoggedIn(true);
+            setUserName(`${user.LastName}, ${user.FirstName}`);
+        }
     }, []);
 
     const handleLogout = () => {
@@ -17,6 +21,7 @@ const Navbar = () => {
         alert(`Thanks ${user.LastName}, ${user.FirstName}. See You Again 😉`)
         localStorage.removeItem('user');
         setIsLoggedIn(false);
+        setUserName('');
         navigate('/');
         window.location.reload();
     };
@@ -34,7 +39,7 @@ const Navbar = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav">
+                        <ul className="navbar-nav me-auto">
                             {isLoggedIn ? (
                                 <>
                                     <li className="nav-item">
@@ -94,6 +99,11 @@ const Navbar = () => {
                                 </>
                             )}
                         </ul>
+                        {isLoggedIn && (
+                            <span className="navbar-text ms-auto text-white fw-bold">
+                                {userName}
+                            </span>
+                        )}
                     </div>
                 </div>
             </nav>

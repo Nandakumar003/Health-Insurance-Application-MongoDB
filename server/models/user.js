@@ -17,7 +17,7 @@ const User = mongoose.model("User", userSchema);
 // 4. create CRUD functions on model
 
 // Get All Users
-async function getAllUsers(id) {
+async function getAllUsers() {
     try {
         return await User.find({});
     } catch (error) {

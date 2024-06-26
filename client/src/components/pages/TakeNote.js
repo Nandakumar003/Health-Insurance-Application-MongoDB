@@ -35,7 +35,7 @@ const Notes = () => {
                         <br></br>
                         <h2 className="text-center">Take Notes</h2>
 
-                        <textarea
+                        <textarea style={{ height: '200px', resize: 'none' }}
                             className="form-control"
                             placeholder="Enter Your Notes"
                             id="NotesDetail"

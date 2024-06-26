@@ -46,10 +46,13 @@ const Navbar = () => {
                                     </li>
 
                                     <li className="nav-item">
-                                        <button className="nav-link btn btn-link" onClick={handleLogout}>
-                                            Logout
-                                        </button>
+                                        <NavLink
+                                            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                                            to="/Notes">
+                                            Take Notes
+                                        </NavLink>
                                     </li>
+
                                     <li className="nav-item">
                                         <NavLink
                                             className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
@@ -57,6 +60,13 @@ const Navbar = () => {
                                             Update Password
                                         </NavLink>
                                     </li>
+
+                                    <li className="nav-item">
+                                        <button className="nav-link btn btn-link" onClick={handleLogout}>
+                                            Logout
+                                        </button>
+                                    </li>
+
                                 </>
                             ) : (
                                 <>

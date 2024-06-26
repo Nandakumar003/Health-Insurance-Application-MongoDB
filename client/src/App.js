@@ -7,6 +7,7 @@ import Reset from './components/pages/Reset.js';
 import Password from './components/pages/UpdatePassword.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import LocalStorageDisplay from './components/pages/Profile.js';
+import Notes from './components/pages/TakeNote.js';
 function App() {
   return (
     <div className="App">
@@ -19,6 +20,7 @@ function App() {
             <Route path="Reset" element={<Reset />} />
             <Route path="Password" element={<Password />} />
             <Route path="Profile" element={<LocalStorageDisplay />} />
+            <Route path="Notes" element={<Notes />} />
           </Route>
         </Routes>
       </BrowserRouter>

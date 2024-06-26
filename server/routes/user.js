@@ -6,7 +6,7 @@ const router = express.Router();
 // 2. create all routes to access database
 router
 
-    .get('/getUsers', async (req, res) => {
+    .get('/getAllUsers', async (req, res) => {
         try {
             const users = await User.getAllUsers()
             res.send(users);

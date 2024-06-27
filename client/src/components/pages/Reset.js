@@ -1,8 +1,10 @@
+import { fetchData } from "../../main.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 
 const Reset = () => {
+
     const [user, setUser] = useState({
         UsernameOrEmail: '',
         NewPassword: '',
@@ -10,35 +12,62 @@ const Reset = () => {
     });
     const [isUserValidated, setIsUserValidated] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
+    const [message, setMessage] = useState('');
     const navigate = useNavigate();
-
+    if (!isUserValidated) {
+        localStorage.removeItem('tempuser')
+    }
     const { UsernameOrEmail, NewPassword, ConfirmPassword } = user;
-
-    const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
+    const onChange = (e) => {
+        setUser({ ...user, [e.target.name]: e.target.value });
+        setErrorMessage(null);
+    };
 
     const validateUser = (e) => {
         e.preventDefault();
-        // Replace this with actual validation logic
-        const userExists = true; // Replace with actual validation check
-        if (userExists) {
-            setIsUserValidated(true);
-            setErrorMessage(null);
-        } else {
-            setErrorMessage("User not found!");
-        }
+        fetchData("/user/searchUser", user, "POST")
+            .then((data) => {
+                if (!data.message) {
+                    localStorage.setItem('tempuser', JSON.stringify(data));
+                    setIsUserValidated(true);
+                    setErrorMessage(null);
+                    const retrievedUser = JSON.parse(localStorage.getItem('tempuser'));
+                    setMessage(`Hi <strong>${retrievedUser.LastName}, ${retrievedUser.FirstName}</strong>. Please proceed in resetting your password!! 😊`);
+                }
+            })
+            .catch((error) => {
+                setErrorMessage(error.message);
+            });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (NewPassword !== ConfirmPassword) {
-            setErrorMessage("Passwords do not match!");
+            setErrorMessage("Passwords do not match!😐");
             return;
         }
-        // Replace this with actual password update logic
-        console.log(user);
-        localStorage.setItem('user', JSON.stringify(user));
-        navigate('/');
-        window.location.reload();
+        else {
+            const retrievedUser = JSON.parse(localStorage.getItem('tempuser'));
+            const user1 =
+            {
+                id: retrievedUser._id,
+                Password: user.NewPassword
+            }
+            fetchData("/user/update", user1, "PUT")
+                .then((data) => {
+                    if (!data.message) {
+                        localStorage.removeItem('tempuser');
+                        localStorage.setItem('user', JSON.stringify(data));
+                        window.alert('Password reset Successfull!!😉')
+                        navigate('/');
+                        window.location.reload();
+
+                    }
+                })
+                .catch((error) => {
+                    setErrorMessage(error.message);
+                });
+        }
     };
 
     return (
@@ -64,9 +93,14 @@ const Reset = () => {
                         />
                     </div>
                     {!isUserValidated ? (
-                        <button onClick={validateUser} className="btn btn-primary">Validate</button>
+                        <>
+                            <button onClick={validateUser} className="btn btn-primary">Validate</button>
+                            {!isUserValidated && errorMessage && <div className="alert alert-danger mt-3">{errorMessage}</div>}
+                        </>
                     ) : (
                         <>
+                            <div className="text-center" dangerouslySetInnerHTML={{ __html: message }}></div>
+                            <br></br>
                             <div className="mb-3">
                                 <input
                                     type="password"
@@ -94,7 +128,7 @@ const Reset = () => {
                             <button onClick={handleSubmit} className={`btn ${isUserValidated ? 'btn-success' : 'btn-primary'}`}>Submit</button>
                         </>
                     )}
-                    {errorMessage && <div className="alert alert-danger mt-3">{errorMessage}</div>}
+                    {isUserValidated && errorMessage && <div className="alert alert-danger mt-3">{errorMessage}</div>}
                 </form>
             </div>
             <footer className="Footer">

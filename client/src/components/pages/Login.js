@@ -1,4 +1,4 @@
-//import { fetchData } from "../../main.js"
+import { fetchData } from "../../main.js"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from 'react-helmet';
@@ -13,7 +13,10 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState(null);
 
     const { Username, Email, Password } = user;
-    const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value })
+    const onChange = (e) => {
+        setUser({ ...user, [e.target.name]: e.target.value })
+        setErrorMessage(null);
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
         if (false) {
@@ -21,20 +24,17 @@ const Login = () => {
         }
         else {
             setErrorMessage(null);
-            //     fetchData("/user/login", user, "POST")
-            //         .then((data) => {
-            //             if (!data.message) {
-            //                 console.log(data);
-            //             }
-            //         })
-            //         .catch((error) => {
-            //             console.log(`Error! ${error.message}`)
-            //         });
-            // };
-            console.log(user);
-            localStorage.setItem('user', JSON.stringify(user));
-            navigate('/');
-            window.location.reload();
+            fetchData("/user/login", user, "POST")
+                .then((data) => {
+                    if (!data.message) {
+                        localStorage.setItem('user', JSON.stringify(data));
+                        navigate('/');
+                        window.location.reload();
+                    }
+                })
+                .catch((error) => {
+                    setErrorMessage(error.message);
+                });
         }
     }
     return (
@@ -68,6 +68,7 @@ const Login = () => {
                             required />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
+                    {errorMessage && <div className="alert alert-danger mt-3">{errorMessage}</div>}
                 </form>
             </div>
             <footer className="Footer">

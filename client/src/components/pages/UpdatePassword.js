@@ -1,4 +1,4 @@
-// import { fetchData } from "../../main.js"
+import { fetchData } from "../../main.js"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from 'react-helmet';
@@ -10,34 +10,40 @@ const Password = () => {
     });
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState(null);
-
     const { Password, ConfPassword } = user;
-    const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value })
+    const onChange = (e) => {
+        setUser({ ...user, [e.target.name]: e.target.value })
+        setErrorMessage(null);
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (false) {
-            setErrorMessage("Error Occured!!!");
+        if (Password !== ConfPassword) {
+            setErrorMessage(`Password do not Match!!😐`)
         }
         else {
-            setErrorMessage(null);
-            //     fetchData("/user/login", user, "POST")
-            //         .then((data) => {
-            //             if (!data.message) {
-            //                 console.log(data);
-            //             }
-            //         })
-            //         .catch((error) => {
-            //             console.log(`Error! ${error.message}`)
-            //         });
-            // };
-            console.log(user);
-            localStorage.setItem('user', JSON.stringify(user));
-            navigate('/');
-            window.location.reload();
+            const retrievedUser = JSON.parse(localStorage.getItem('user'));
+            const user1 =
+            {
+                id: retrievedUser._id,
+                Password: user.Password
+            }
+            fetchData("/user/update", user1, "PUT")
+                .then((data) => {
+                    if (!data.message) {
+                        localStorage.removeItem('tempuser');
+                        localStorage.setItem('user', JSON.stringify(data));
+                        window.alert('Password reset Successfull!!😉')
+                        navigate('/');
+                        window.location.reload();
+                    }
+                })
+                .catch((error) => {
+                    setErrorMessage(error.message);
+                });
         }
-    }
+    };
     const retrievedUser = JSON.parse(localStorage.getItem('user'));
-    const message = `Hi <strong>${retrievedUser.LastName}, ${retrievedUser.FirstName}</strong>. Please proceed in reseting your password!!`
+    const message = (`Hi <strong>${retrievedUser.LastName}, ${retrievedUser.FirstName}</strong>. Please proceed in reseting your password!!`);
     return (
         <div>
             <div className="container mt-4" style={{ width: '50%', padding: '10px' }}>
@@ -52,7 +58,7 @@ const Password = () => {
                     <br></br>
                     <div className="mb-3">
                         <input
-                            type="text"
+                            type="password"
                             className="form-control"
                             placeholder="Enter New Password"
                             id="Password"
@@ -71,6 +77,7 @@ const Password = () => {
                             required />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
+                    {errorMessage && <div className="alert alert-danger mt-3">{errorMessage}</div>}
                 </form>
             </div>
             <footer className="Footer">

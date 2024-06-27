@@ -1,4 +1,4 @@
-//import { fetchData } from "../../main.js"
+import { fetchData } from "../../main.js"
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -26,26 +26,23 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (false) {
-            setErrorMessage("Error Occured!!!");
+        if (Password !== ConfPassword) {
+            setErrorMessage("Password Do not match!!😐");
+
         }
-        if (Password !== ConfPassword) { setErrorMessage("Password Do not match!!😐"); }
         else {
             setErrorMessage(null);
-            //     fetchData("/user/register", user, "POST")
-            //         .then((data) => {
-            //             if (!data.message) {
-            //                 console.log(data);
-            //             }
-            //         })
-            //         .catch((error) => {
-            //             console.log(`Error! ${error.message}`)
-            //         });
-            // };
-            console.log(user);
-            localStorage.setItem('user', JSON.stringify(user));
-            navigate('/');
-            window.location.reload();
+            fetchData("/user/register", user, "POST")
+                .then((data) => {
+                    if (!data.message) {
+                        localStorage.setItem('user', JSON.stringify(data));
+                        navigate('/');
+                        window.location.reload();
+                    }
+                })
+                .catch((error) => {
+                    setErrorMessage(error.message);
+                });
         }
     }
     return (

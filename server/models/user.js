@@ -67,7 +67,10 @@ async function login(Username, Password) {
 
 // UPDATE
 async function updatePassword(id, Password) {
-    const user = await User.updateOne({ "_id": id }, { $set: { Password: Password } });
+    const salt = await bcrypt.genSalt(10);
+    const hashed = await bcrypt.hash(Password, salt);
+    await User.updateOne({ "_id": id }, { $set: { Password: hashed } });
+    const user = await User.findById(id);
     return user._doc;
 }
 
@@ -75,6 +78,21 @@ async function updatePassword(id, Password) {
 async function deleteUser(id) {
     await User.deleteOne({ "_id": id });
 };
+
+//Search User..
+async function searchUser(User) {
+    var user = await getUser(User);
+    if (user) {
+        return user._doc;
+    }
+    else {
+        var user = await getEmail(User);
+        if (user) {
+            return user._doc;
+        }
+        throw Error("Username/Email do not exist!!");
+    }
+}
 
 // utility functions
 async function getUser(Username) {
@@ -86,5 +104,5 @@ async function getEmail(Email) {
 
 // 5. export all functions we want to access in route files
 module.exports = {
-    register, login, updatePassword, deleteUser, getAllUsers
+    register, login, updatePassword, deleteUser, getAllUsers, searchUser
 };

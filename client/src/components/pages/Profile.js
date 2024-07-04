@@ -1,16 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { fetchData } from '../../main.js';
 
 const UserDetailContainer = () => {
     const [userData, setUserData] = useState(null);
+    const [notes, setNotes] = useState([]);
 
     useEffect(() => {
         // Fetch data from local storage
         const storedData = localStorage.getItem('user');
         if (storedData) {
-            setUserData(JSON.parse(storedData));
+            const parsedData = JSON.parse(storedData);
+            setUserData(parsedData);
+            // Fetch user notes
+            fetchUserNotes(parsedData._id); // Assuming the user ID is stored in the _id field
         }
     }, []);
+
+    const fetchUserNotes = async (userId) => {
+        try {
+            const response = await fetchData(`/getUserNotes?userId=${userId}`, {}, 'GET');
+            setNotes(response);
+        } catch (error) {
+            console.error('Error fetching notes:', error);
+        }
+    };
 
     return (
         <div>
@@ -28,6 +42,28 @@ const UserDetailContainer = () => {
                             <p><strong>Last Name:</strong> {userData.LastName}</p>
                             <p><strong>Username:</strong> {userData.Username}</p>
                             <p><strong>Email:</strong> {userData.Email}</p>
+                        </div>
+                        <br></br>
+                        <h2 className="text-center">User Notes</h2>
+                        <div className="card-body">
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th>Note ID</th>
+                                        <th>Details</th>
+                                        <th>Created At</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {notes.map(note => (
+                                        <tr key={note._id}>
+                                            <td>{note._id}</td>
+                                            <td>{note.NotesDetail}</td>
+                                            <td>{new Date(note.createdAt).toLocaleString()}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 ) : (

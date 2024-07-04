@@ -18,11 +18,16 @@ const UserDetailContainer = () => {
     const fetchUserNotes = async (userId) => {
         try {
             const response = await fetchData(`/getUserNotes?userId=${userId}`, {}, 'GET');
-            console.log(response);
+            console.log('Fetch successful:', response);
             setNotes(response);
         } catch (error) {
-            console.error('Error fetching notes:', error);
+            console.error('Error fetching notes:', error.message);
         }
+    };
+
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
     };
 
     return (
@@ -58,7 +63,7 @@ const UserDetailContainer = () => {
                                         <tr key={note._id}>
                                             <td>{note._id}</td>
                                             <td>{note.NotesDetail}</td>
-                                            <td>{new Date(note.createdAt).toLocaleString()}</td>
+                                            <td>{formatDate(note.createdAt)}</td>
                                         </tr>
                                     ))}
                                 </tbody>

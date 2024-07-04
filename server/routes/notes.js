@@ -1,9 +1,8 @@
 // 1. import any needed libraries
 const express = require("express");
-const Note = require('../models/notes'); //accesses functions in user model file
+const Note = require('../models/notes');
 const router = express.Router();
 
-// 2. create all routes to access database
 router
     .post('/add', async (req, res) => {
         try {
@@ -14,12 +13,26 @@ router
         }
     })
 
-    .get('/get', async (req, res) => {
+    .get('/getAllNotes', async (req, res) => {
         try {
-            const notes = await Note.getAllNotes(); // Assuming getAllNotes method exists in your Note model
+            const notes = await Note.getAllNotes();
             res.send(notes);
         } catch (error) {
             res.status(401).send({ message: error.message });
+        }
+    })
+
+
+    .get('/getUserNotes', async (req, res) => {
+        const userId = req.query.userId;
+        if (!userId) {
+            return res.status(400).send({ message: 'User ID is required' });
+        }
+        try {
+            const notes = await Note.getUserNotes(userId);
+            res.send(notes);
+        } catch (error) {
+            res.status(401).send({ message: 'Error retrieving notes: ' + error.message });
         }
     })
     //Update a NOte

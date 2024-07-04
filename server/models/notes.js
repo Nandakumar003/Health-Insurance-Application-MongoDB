@@ -24,9 +24,17 @@ async function addNotes(id, NotesDetail) {
 }
 
 //Getting all the notes
-async function getAllNotes(id) {
+async function getAllNotes() {
     try {
         return await Notes.find({});
+    } catch (error) {
+        throw new Error('Error retrieving notes: ' + error.message);
+    }
+};
+
+async function getUserNotes(id) {
+    try {
+        return await Notes.find({ User_id: id }).sort({ createdAt: -1 });;
     } catch (error) {
         throw new Error('Error retrieving notes: ' + error.message);
     }
@@ -46,5 +54,5 @@ async function deleteNote(id) {
 
 // 5. export all functions we want to access in route files
 module.exports = {
-    addNotes, getAllNotes, updateNote, deleteNote
+    addNotes, getAllNotes, updateNote, deleteNote, getUserNotes
 };

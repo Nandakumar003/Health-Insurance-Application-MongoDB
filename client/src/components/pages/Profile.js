@@ -7,19 +7,18 @@ const UserDetailContainer = () => {
     const [notes, setNotes] = useState([]);
 
     useEffect(() => {
-        // Fetch data from local storage
         const storedData = localStorage.getItem('user');
         if (storedData) {
             const parsedData = JSON.parse(storedData);
             setUserData(parsedData);
-            // Fetch user notes
-            fetchUserNotes(parsedData._id); // Assuming the user ID is stored in the _id field
+            fetchUserNotes(parsedData._id);
         }
     }, []);
 
     const fetchUserNotes = async (userId) => {
         try {
             const response = await fetchData(`/getUserNotes?userId=${userId}`, {}, 'GET');
+            console.log(response);
             setNotes(response);
         } catch (error) {
             console.error('Error fetching notes:', error);

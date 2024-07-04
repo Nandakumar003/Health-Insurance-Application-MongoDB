@@ -8,7 +8,7 @@ const Home = () => {
             </Helmet>
             <main>
                 <div className="main-container">
-                    <article class="article-styling">
+                    <article className="article-styling">
                         <h2>Why Health Insurance Matters</h2>
                         <p>Health insurance provides financial protection against medical expenses. It covers hospitalization
                             costs, doctor visits, prescription drugs, and preventive care.</p>

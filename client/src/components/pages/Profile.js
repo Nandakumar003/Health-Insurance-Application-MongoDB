@@ -17,7 +17,7 @@ const UserDetailContainer = () => {
 
     const fetchUserNotes = async (userId) => {
         try {
-            const response = await fetchData(`/getUserNotes?userId=${userId}`, {}, 'GET');
+            const response = await fetchData(`/getAllNotes`, {}, 'GET');
             console.log('Fetch successful:', response);
             setNotes(response);
         } catch (error) {

@@ -76,7 +76,13 @@ async function updatePassword(id, Password) {
 
 //DELETE
 async function deleteUser(id) {
-    await User.deleteOne({ "_id": id });
+    var search = await User.findOne({ "_id": id });
+    if (search) {
+        await User.deleteOne({ "_id": id });
+    }
+    else {
+        throw Error("User do not exist!!");
+    }
 };
 
 //Search User..

@@ -42,7 +42,7 @@ const Navbar = () => {
         fetchData("/user/delete", del, "DELETE")
             .then((data) => {
                 if (data.success === "Account deleted") {
-                    window.alert('Wish to see you again!!😔')
+                    window.alert('Wish to see you again!! ☹')
                     localStorage.removeItem('user');
                     setIsLoggedIn(false);
                     setUserName('');
@@ -97,14 +97,14 @@ const Navbar = () => {
                                     </li>
 
                                     <li className="nav-item">
-                                        <button className="nav-link btn btn-link" onClick={showDeletePopup}>
-                                            Delete Account
+                                        <button className="nav-link btn btn-link" onClick={handleLogout}>
+                                            Logout
                                         </button>
                                     </li>
 
                                     <li className="nav-item">
-                                        <button className="nav-link btn btn-link" onClick={handleLogout}>
-                                            Logout
+                                        <button className="nav-link btn btn-link" onClick={showDeletePopup}>
+                                            Delete Account
                                         </button>
                                     </li>
 

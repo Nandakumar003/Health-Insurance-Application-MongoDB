@@ -1,4 +1,4 @@
-//import { fetchData } from "../../main.js"
+import { fetchData } from "../../main.js"
 import { useState } from "react";
 import { Helmet } from 'react-helmet';
 const Notes = () => {
@@ -11,17 +11,30 @@ const Notes = () => {
         SetNotes({ ...Notes, [e.target.name]: e.target.value });
         setErrorMessage(null);
     }
-
     const [errorMessage, setErrorMessage] = useState(null);
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (false) {
-            setErrorMessage("Error Occured!!!");
+        if (Notes.NotesDetail === "") {
+            setErrorMessage("Please Enter a note before hitting on submit!!🙃");
         }
         else {
-            setErrorMessage(null);
-            console.log(Notes);
+            setErrorMessage("All good");
+            const retrievedUser = JSON.parse(localStorage.getItem('user'));
+            const usernotes =
+            {
+                id: retrievedUser._id,
+                NotesDetail: Notes.NotesDetail
+            }
+            console.log(usernotes);
+            fetchData("/note/add", usernotes, "POST")
+                .then((data) => {
+                    if (!data.message) {
+                        setErrorMessage(`Notes Added Successfully!!!`)
+                    }
+                })
+                .catch((error) => {
+                    setErrorMessage(error.message);
+                });
         }
     }
     return (

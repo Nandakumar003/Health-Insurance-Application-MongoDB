@@ -7,7 +7,7 @@ router
     .post('/add', async (req, res) => {
         try {
             await Note.addNotes(req.body.id, req.body.NotesDetail);
-            res.send({ message: `Notes Added Successfully!!` });
+            res.send({ Success: `Notes Added Successfully.` });
         } catch (error) {
             res.status(401).send({ message: error.message });
         }

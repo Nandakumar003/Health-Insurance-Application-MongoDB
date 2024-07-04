@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import '../stylesheet/Navbar.css';
+import { fetchData } from "../../main.js"
 
 const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState('');
+    const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
     const navigate = useNavigate();
 
@@ -18,12 +20,40 @@ const Navbar = () => {
 
     const handleLogout = () => {
         const user = JSON.parse(localStorage.getItem('user'));
-        alert(`Thanks ${user.LastName}, ${user.FirstName}. See You Again 😉`)
+        alert(`Thanks ${user.LastName}, ${user.FirstName}. See You Again 😉`);
         localStorage.removeItem('user');
         setIsLoggedIn(false);
         setUserName('');
         navigate('/');
         window.location.reload();
+    };
+
+    const showDeletePopup = () => {
+        setShowDeleteConfirmation(true);
+    };
+
+    const hideDeletePopup = () => {
+        setShowDeleteConfirmation(false);
+    };
+
+    const handleDeleteAccount = () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const del = { id: user._id }
+        fetchData("/user/delete", del, "DELETE")
+            .then((data) => {
+                if (data.success === "Account deleted") {
+                    window.alert('Wish to see you again!!😔')
+                    localStorage.removeItem('user');
+                    setIsLoggedIn(false);
+                    setUserName('');
+                    navigate('/');
+                    window.location.reload();
+                }
+            })
+            .catch((error) => {
+                window.alert(error.message);
+            });
+
     };
 
     return (
@@ -67,6 +97,12 @@ const Navbar = () => {
                                     </li>
 
                                     <li className="nav-item">
+                                        <button className="nav-link btn btn-link" onClick={showDeletePopup}>
+                                            Delete Account
+                                        </button>
+                                    </li>
+
+                                    <li className="nav-item">
                                         <button className="nav-link btn btn-link" onClick={handleLogout}>
                                             Logout
                                         </button>
@@ -107,6 +143,17 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
+            {showDeleteConfirmation && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <p>Are you sure you want to delete your account?</p>
+                        <div className="popup-buttons">
+                            <button className="btn btn-danger" onClick={handleDeleteAccount}>OK</button>
+                            <button className="btn btn-secondary" onClick={hideDeletePopup}>Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            )}
             <Outlet />
         </div>
     );

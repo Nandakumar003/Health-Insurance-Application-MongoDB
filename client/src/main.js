@@ -1,11 +1,15 @@
 export async function fetchData(route = '', data = {}, methodType) {
-    const response = await fetch(`http://localhost:5000${route}`, {
+    const url = `http://localhost:5000${route}`
+    const options = {
         method: methodType,
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data)
-    });
+    }
+    if (methodType !== 'GET') {
+        options.body = JSON.stringify(data);
+    }
+    const response = await fetch(url, options);
     if (response.ok) {
         return await response.json();
     } else {

@@ -7,7 +7,7 @@ const Home = () => {
                 <title>NHI - Home</title>
             </Helmet>
             <main>
-                <div class="main-container">
+                <div className="main-container">
                     <article class="article-styling">
                         <h2>Why Health Insurance Matters</h2>
                         <p>Health insurance provides financial protection against medical expenses. It covers hospitalization
@@ -15,7 +15,7 @@ const Home = () => {
                         <p>Without health insurance, medical bills can quickly become overwhelming, leading to financial
                             hardship.</p>
                     </article>
-                    <div class="categories">
+                    <div className="categories">
                         <h2>Types of Health Insurance Plans</h2>
                         <ul>
                             <li><a href="#HMO">Health Maintenance Organization (HMO)</a></li>
@@ -32,7 +32,7 @@ const Home = () => {
                         insurance plan. Evaluate your healthcare needs and compare different options before making a decision.
                     </p>
 
-                    <article class="article-styling">
+                    <article className="article-styling">
                         <h2 id="HMO">Health Maintenance Organization (HMO)</h2>
                         <p>An HMO is a type of Medicare Advantage Plan (Part C) offered by a private insurance company. When you
                             have an HMO, you generally must get your care and services from doctors, other health care
@@ -41,7 +41,7 @@ const Home = () => {
                             target="_blank">Read More</a>
                     </article>
 
-                    <article class="article-styling">
+                    <article className="article-styling">
                         <h2 id="PPO">Preferred Provider Organization (PPO)</h2>
                         <p>A preferred provider organization (PPO) is a health insurance plan for individuals and families. PPOs
                             involve networks that are made up of contracted medical professionals and health insurance
@@ -53,7 +53,7 @@ const Home = () => {
                             More</a>
                     </article>
 
-                    <article class="article-styling">
+                    <article className="article-styling">
                         <h2 id="EPO">Exclusive Provider Organization (EPO)</h2>
                         <p>An EPO is a type of health plan that falls somewhere between a Health Maintenance Organization (HMO)
                             and a Preferred Provider Organization (PPO) in terms of cost and flexibility. With an EPO, members
@@ -63,7 +63,7 @@ const Home = () => {
                             target="_blank">Read More</a>
                     </article>
 
-                    <article class="article-styling">
+                    <article className="article-styling">
                         <h2 id="POS">Point of Service (POS)</h2>
                         <p>A point-of-service (POS) plan is a type of managed-care health insurance plan that provides different
                             benefits depending on whether the policyholder uses in-network or out-of-network healthcare

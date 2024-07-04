@@ -3,8 +3,12 @@ const express = require('express');
 const app = express();
 const mongoose = require("mongoose");
 const path = require('path')
+const cors = require('cors');
+// Enable all CORS requests
+app.use(cors());
 
-app.use(express.json()); // parses JSON bodies
+// parses JSON bodies
+app.use(express.json());
 
 const userRoutes = require("./server/routes/user");
 const noteRoutes = require("./server/routes/notes");

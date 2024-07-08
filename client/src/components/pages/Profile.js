@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { fetchData } from '../../main.js';
 
 const UserDetailContainer = () => {
     const [userData, setUserData] = useState(null);
@@ -17,9 +16,12 @@ const UserDetailContainer = () => {
 
     const fetchUserNotes = async (userId) => {
         try {
-            const response = await fetchData(`/getUserNotes?userId=${userId}`, {}, 'GET');
-            console.log('Fetch successful:', response);
-            setNotes(response);
+            const response = await fetch(`http://localhost:5000/note/getUserNotes?userId=${userId}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            setNotes(data);
         } catch (error) {
             console.error('Error fetching notes:', error.message);
         }
